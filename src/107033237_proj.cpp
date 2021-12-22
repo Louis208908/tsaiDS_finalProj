@@ -13,6 +13,7 @@ ifstream stationStream("../DS_testcase/open_basic1/test_case/station.txt", ifstr
 ifstream userStream("../DS_testcase/open_basic1/test_case/user.txt", ifstream::in);
 ifstream feeStream("../DS_testcase/open_basic1/test_case/fee.txt", ifstream::in);
 ofstream requestStream("../DS_testcase/open_basic1/test_case/request.txt", ofstream::out);
+static ofstream checkStream("../DS_testcase/open_basic1/test_case/check.txt", ofstream::out);
 
 void findFiles(string path)
 {
@@ -48,7 +49,7 @@ int main(void)
     map_info::buildMap(mapStream, station_info);
     // map_info::showMap(station_info);
 
-    rental_company *company = new rental_company();
+    rental_company *company = new rental_company(station_info);
     company->bikeAmountInit(stationStream);
 
     while(!userStream.eof()){
@@ -65,10 +66,11 @@ int main(void)
             userStream >> bikeType;
             userStream >> user_id;
             userStream >> timeRent;
-            cout << stoi(user_id) << endl;
+            // cout << stoi(user_id) << endl;
             // cout << station_id << " " << bikeType << " " << user_id << " " << timeRent << "." << endl;
             requestStream << "rent "<< station_id << " " << bikeType << " " << user_id << " " << timeRent <<  endl;
-            requestStream << rental_company::rent_handling(company, station_id, bikeType, user_id, timeRent) << endl;
+            checkStream << user_id << " " << bikeType << " " << timeRent << endl;
+            requestStream << rental_company::rent_handling(company, station_id, user_id, bikeType, timeRent) << endl;
         }
         else if(serviceType == "return"){
             requestStream << endl;
@@ -80,7 +82,7 @@ int main(void)
             
         }
     }
-
+    // map_info::showMap(company->map);
     company->showQuota();
     // company->showQuota();
 

@@ -13,7 +13,7 @@ int transfer_fee;
 int reduced_rate;
 int waiting_fee;
 
-rental_company::rental_company(){
+rental_company::rental_company(class map_info** map){
     string str;
     feeStream >> str;
     feeStream >> electric_fee[0] >> electric_fee[1];
@@ -23,6 +23,9 @@ rental_company::rental_company(){
     feeStream >> road_fee[0] >> road_fee[1];
     feeStream >> waiting_fee >> reduced_rate >> transfer_fee;
     this->station_info = (class station **)malloc(sizeof(class station) * (map_info::station_amount + 1));
+    this->map = map;
+    // this->station_info = new station()[map_info::station_amount + 1];
+    this->user_info_manager = new user();
 }
 
 void rental_company::bikeAmountInit(ifstream& stationStream){
@@ -82,11 +85,11 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
         // request out of time is not acceptable
     }
     int bike_type = 0;
-    if(userId == "electric")
+    if(bikeType == "electric")
         bike_type = 1;
-    else if(userId == "lady")
+    else if(bikeType == "lady")
         bike_type = 2;
-    else if(userId == "road")
+    else if(bikeType == "road")
         bike_type = 3;
     
     switch(bike_type){
@@ -97,6 +100,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
             }
             else{
                 int rentBikeId = company->station_info[stationId]->electric_manager->extractMin();
+                company->user_info_manager->insert(stationId, userId, bikeType, rentTime);
             }
             break;
         case 2:
@@ -106,6 +110,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
             }
             else{
                 int rentBikeId = company->station_info[stationId]->lady_manager->extractMin();
+                company->user_info_manager->insert(stationId, userId, bikeType, rentTime);
             }
             break;
         case 3:
@@ -115,8 +120,10 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
             }
             else{
                 int rentBikeId = company->station_info[stationId]->road_manager->extractMin();
+                company->user_info_manager->insert(stationId, userId, bikeType, rentTime);
             }
             break;
     }
+    company->user_info_manager->hTable->findUser(userId);
     return "accept";
 }

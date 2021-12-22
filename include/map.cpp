@@ -58,6 +58,7 @@ void map_info::buildMap(ifstream& mapStream, map_info **station){
 }
 
 void map_info::showMap(map_info **station){
+    cout << "station amount = " << map_info::station_amount << endl;
     for (int i = 1; i <= map_info::station_amount; i++){
         for (int j = i; j <= map_info::station_amount; j++){
             if (station[i]->station_adjacency[j])
