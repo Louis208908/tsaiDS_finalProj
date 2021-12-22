@@ -1,0 +1,49 @@
+#ifndef __rental_company_H
+#define __rental_company_H
+
+#include "bits/stdc++.h"
+#include "map.h"
+#include "renter.h"
+#include "bike.h"
+
+
+using namespace std;
+
+class rental_company{
+
+
+public:
+    int revenue;
+    class map_info **map;
+    rental_company();
+    class station **station_info;
+    void bikeAmountInit(ifstream &stationStream);
+    void showQuota();
+    static string rent_handling(rental_company *company, int stationId, string userId, string bikeType, int rentTime);
+
+    static void return_handling(rental_company *company, int stationId, string userId, int returnTime);
+    static int calculating_fee(rental_company *company, int rentStation, int returnStation, string bikeType);
+};
+
+class station{
+    public:
+        // friend class rental_company;
+        // int electric_amount;
+        // int lady_amount;
+        // int road_amount;
+        int station_id;
+        class electric *electric_manager;
+        class lady *lady_manager;
+        class road *road_manager;
+        // class BIKE *electric_manager;
+        // class BIKE *lady_manager;
+        // class BIKE *road_manager;
+        station(int station_id, int elec, int lady, int road);
+        void bikeRegistering();
+};
+
+
+
+
+
+#endif

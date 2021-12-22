@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../include/lib/librental_lib.a CMakeFiles/rental_lib.dir/include/rental.cpp.o CMakeFiles/rental_lib.dir/include/bike.cpp.o
+/usr/bin/ranlib ../include/lib/librental_lib.a

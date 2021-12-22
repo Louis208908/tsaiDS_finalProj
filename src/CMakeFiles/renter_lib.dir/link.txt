@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../include/lib/librenter_lib.a CMakeFiles/renter_lib.dir/include/renter.cpp.o
+/usr/bin/ranlib ../include/lib/librenter_lib.a

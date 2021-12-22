@@ -1,0 +1,86 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10.2"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "FINAL_PROJ",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "107033237_proj::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-107033237_proj-Debug-5f3167e1186999d7f5a4.json",
+					"name" : "107033237_proj",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "map_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-map_lib-Debug-7b20051142c4d6beac3b.json",
+					"name" : "map_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rental_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rental_lib-Debug-880e43afcbdc8a864c3e.json",
+					"name" : "rental_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "renter_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-renter_lib-Debug-a974817f98b64d3921a4.json",
+					"name" : "renter_lib",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/louis/c_project/final_proj/build",
+		"source" : "/home/louis/c_project/final_proj"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}

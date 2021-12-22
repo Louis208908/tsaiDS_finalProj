@@ -1,0 +1,2 @@
+/usr/bin/x86_64-linux-gnu-ar qc ../include/lib/librenter_lib.a CMakeFiles/renter_lib.dir/include/renter.cpp.o
+/usr/bin/x86_64-linux-gnu-ranlib ../include/lib/librenter_lib.a

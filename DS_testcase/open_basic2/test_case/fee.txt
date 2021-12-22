@@ -1,0 +1,6 @@
+electric 30 40
+lady 25 35
+road 15 25
+5
+0.8
+20

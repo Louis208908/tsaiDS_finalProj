@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../include/lib/libmap_lib.a CMakeFiles/map_lib.dir/include/map.cpp.o
+/usr/bin/ranlib ../include/lib/libmap_lib.a
