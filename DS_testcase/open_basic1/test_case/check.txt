@@ -1,3 +1,0 @@
-00001 lady 0
-00018 electric 19
-00059 road 39

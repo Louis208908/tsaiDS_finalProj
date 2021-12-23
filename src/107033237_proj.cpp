@@ -13,7 +13,11 @@ ifstream stationStream("../DS_testcase/open_basic1/test_case/station.txt", ifstr
 ifstream userStream("../DS_testcase/open_basic1/test_case/user.txt", ifstream::in);
 ifstream feeStream("../DS_testcase/open_basic1/test_case/fee.txt", ifstream::in);
 ofstream requestStream("../DS_testcase/open_basic1/test_case/request.txt", ofstream::out);
+ofstream status("../output/part1_status.txt", ofstream::out);
+ofstream response("../output/part1_response.txt", ofstream::out);
 static ofstream checkStream("../DS_testcase/open_basic1/test_case/check.txt", ofstream::out);
+
+void fileRefresh();
 
 void findFiles(string path)
 {
@@ -42,12 +46,15 @@ int map_info::station_amount;
 int main(void)
 {
 
-
+    fileRefresh();
 
     map_info::findMaxId(mapStream);
     class map_info *station_info[map_info::station_amount + 1];
     map_info::buildMap(mapStream, station_info);
-    // map_info::showMap(station_info);
+
+#ifdef DEBUG
+    map_info::showMap(station_info);
+#endif
 
     rental_company *company = new rental_company(station_info);
     company->bikeAmountInit(stationStream);
@@ -68,9 +75,12 @@ int main(void)
             userStream >> timeRent;
             // cout << stoi(user_id) << endl;
             // cout << station_id << " " << bikeType << " " << user_id << " " << timeRent << "." << endl;
-            requestStream << "rent "<< station_id << " " << bikeType << " " << user_id << " " << timeRent <<  endl;
-            checkStream << user_id << " " << bikeType << " " << timeRent << endl;
-            requestStream << rental_company::rent_handling(company, station_id, user_id, bikeType, timeRent) << endl;
+            // requestStream << "rent "<< station_id << " " << bikeType << " " << user_id << " " << timeRent <<  endl;
+            // checkStream << user_id << " " << bikeType << " " << timeRent << endl;
+            response << "rent "<< station_id << " " << bikeType << " " << user_id << " " << timeRent <<  endl;
+            string resp = rental_company::rent_handling(company, station_id, user_id, bikeType, timeRent);
+            response << resp << endl;
+            // requestStream << resp << endl;
         }
         else if(serviceType == "return"){
             // requestStream << endl;
@@ -81,15 +91,39 @@ int main(void)
             rental_company::return_handling(company, station_id, user_id, timeReturn);
         }
     }
-    // map_info::showMap(company->map);
+    
+    company->showQuota();
     cout << endl
          << "------------------------------" << endl
          << "Revenue = " << company->revenue << endl
          << "------------------------------" << endl;
-    
-    company->showQuota();
-    // company->showQuota();
-    // company->showQuota();
+
+    status << endl
+         << "------------------------------" << endl
+         << "Revenue = " << company->revenue << endl
+         << "------------------------------" << endl;
+
+    status.close();
+    response.close();
+    feeStream.close();
+    stationStream.close();
+    requestStream.close();
+    checkStream.close();
+    userStream.close();
+    mapStream.close();
+
 
     return 0;
+}
+
+
+
+
+void fileRefresh(){
+    status << "";
+    status.close();
+    status.open("../output/part1_status.txt", ofstream::app);
+    response << "";
+    response.close();
+    response.open("../output/part1_response.txt", ofstream::app);
 }

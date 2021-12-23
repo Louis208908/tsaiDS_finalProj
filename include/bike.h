@@ -17,7 +17,6 @@ class BIKE{
         void heapify(int index);
         int extractMin();
         void printHeap();
-        void printHeapToFile();
 };
 
 class electric: public BIKE{

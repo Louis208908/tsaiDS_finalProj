@@ -1,6 +1,0 @@
-rent 1 lady 00001 0
-accept
-rent 6 electric 00018 19
-accept
-rent 3 road 00059 39
-accept

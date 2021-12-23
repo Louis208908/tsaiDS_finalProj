@@ -2,6 +2,8 @@
 #include "bike.h"
 
 extern ifstream feeStream;
+extern ofstream status;
+extern ofstream response;
 
 int electric_fee[2];
 int lady_fee[2];
@@ -27,12 +29,15 @@ rental_company::rental_company(class map_info** map){
     // this->station_info = new station()[map_info::station_amount + 1];
     this->user_info_manager = new user();
     this->revenue = 0;
+
+    #ifdef DEBUG
     cout << "-------------------------" << endl
          << "       Show Price        " << endl
          << "-------------------------" << endl;
     cout <<  "  Reg "<< electric_fee[1] << ", discount "<< electric_fee[0] << endl;
     cout <<  "  Reg "<< lady_fee[1] << ", discount "<< lady_fee[0] << endl;
     cout <<  "  Reg "<< road_fee[1] << ", discount "<< road_fee[0] << endl<< endl << endl;
+    #endif
 }
 
 void rental_company::bikeAmountInit(ifstream& stationStream){
@@ -59,6 +64,7 @@ station::station(int station_id, int electric_num, int lady_num, int road_num){
 
 void rental_company::showQuota(){
     int bikeCount = 0;
+    
     for (int i = 1; i <= map_info::station_amount; i ++){
         // cout << "station_id: " << i << endl;
         bikeCount += this->station_info[i]->electric_manager->residual;
@@ -66,14 +72,22 @@ void rental_company::showQuota(){
         bikeCount += this->station_info[i]->road_manager->residual;
         cout  << i <<": " << endl;
         cout << "electric: ";
+        status << i << ": " << endl
+               << "electric: ";
         this->station_info[i]->electric_manager->printHeap();
         cout << "lady: ";
+        status << "lady: ";
         this->station_info[i]->lady_manager->printHeap();
         cout << "road: ";
+        status << "road: ";
         this->station_info[i]->road_manager->printHeap();
     }
+    #ifdef DEBUG
     cout << "After a day, total bike amount = " << bikeCount << endl;
+    #endif
 }
+
+
 
 
 
@@ -111,8 +125,10 @@ void station::bikeRegistering(){
     // after initializing we expand the quota to the possible maximun number of the whole world
     // allowing all bikes to returne to the same station
 
+    #ifdef DEBUG
     if(this->station_id == map_info::station_amount)
         cout << "total bike amount = " << bikeCount << endl << endl  << endl;
+    #endif
 }
 
 string rental_company::rent_handling(rental_company *company, int stationId, string userId, string bikeType, int rentTime){
@@ -186,11 +202,13 @@ void rental_company::return_handling(rental_company * company, int stationId, st
 
     int shortest_distance = company->map[smaller_stationId]->distance[bigger_stationId];
     int actual_distance = returnTime - user->rentTime;
+    #ifdef DEBUG
     cout << "---------------------------------" << endl;
     cout << "from: " << user->station_id << " ,to: " << stationId << " using " << user->bikeType <<" bike."<<endl;
     cout << "BikeID: " << user->bikeId << ". Returning to station " << stationId << endl;
     cout << "shortest = " << shortest_distance << " ,actual = " << actual_distance << endl;
     cout << "---------------------------------" << endl << endl;
+    #endif
     switch(bike_type){
         case 1:
             company->station_info[stationId]->electric_manager->insert(user->bikeId);

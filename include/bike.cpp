@@ -6,6 +6,8 @@
     (b) ^= (a);    \
     (a) ^= (b);
 
+extern ofstream status;
+extern ofstream response;
 
 #define parentNode(i) (((i) - 1) / 2)
 #define leftChild(i) ((2 * (i)) + 1)
@@ -39,16 +41,16 @@ void BIKE::printHeap(){
     // cout << "Amount: " << this->residual << endl;
     int amount = this->residual;
     for (int i = 0; i < amount; i++){
-        cout << this->extractMin() << " ";
+        int data = this->extractMin();
+        cout << data << " ";
+        status << data << " ";
         // this->extractMin();
         // cout << this->residual << " ";
     }
     cout << endl;
+    status << endl;
 }
 
-void BIKE::printHeapToFile(){
-    
-}
 
 int BIKE::extractMin(){
     if(this->residual <= 0){
