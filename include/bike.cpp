@@ -13,7 +13,6 @@
 
 BIKE::BIKE(int amount){
     this->quota = amount;
-    // this->quota = map_info::station_amount * 100;
     this->residual = 0;
     this->storehouse = (int *)malloc(sizeof(int) * 100 * map_info::station_amount);
 }
@@ -28,10 +27,12 @@ void BIKE::insert(int key){
     int nowPosition = this->residual - 1;
     this->storehouse[nowPosition] = key;
     
-    while( !(nowPosition) && this->storehouse[parentNode(nowPosition)] > this->storehouse[nowPosition]){
+    while( nowPosition != 0 && this->storehouse[parentNode(nowPosition)] > this->storehouse[nowPosition]){
+    // while(this->storehouse[parentNode(nowPosition)] > this->storehouse[nowPosition]){
         swap(this->storehouse[parentNode(nowPosition)], this->storehouse[nowPosition]);
         nowPosition = parentNode(nowPosition);
     }
+
 }
 
 void BIKE::printHeap(){
@@ -45,10 +46,18 @@ void BIKE::printHeap(){
     cout << endl;
 }
 
+void BIKE::printHeapToFile(){
+    
+}
+
 int BIKE::extractMin(){
     if(this->residual <= 0){
         cout << "storehouse empty!" << endl;
         return NULL ;
+    }
+    if(this->residual == 1){
+        this->residual --;
+        return this->storehouse[0];
     }
 
     int min = this->storehouse[0];

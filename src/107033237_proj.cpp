@@ -82,7 +82,11 @@ int main(void)
         }
     }
     // map_info::showMap(company->map);
-    cout << "Revenue = " << company->revenue << endl;
+    cout << endl
+         << "------------------------------" << endl
+         << "Revenue = " << company->revenue << endl
+         << "------------------------------" << endl;
+    
     company->showQuota();
     // company->showQuota();
     // company->showQuota();
