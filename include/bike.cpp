@@ -13,6 +13,7 @@
 
 BIKE::BIKE(int amount){
     this->quota = amount;
+    // this->quota = map_info::station_amount * 100;
     this->residual = 0;
     this->storehouse = (int *)malloc(sizeof(int) * 100 * map_info::station_amount);
 }
@@ -34,7 +35,7 @@ void BIKE::insert(int key){
 }
 
 void BIKE::printHeap(){
-    cout << "Amount: " << this->residual << endl;
+    // cout << "Amount: " << this->residual << endl;
     int amount = this->residual;
     for (int i = 0; i < amount; i++){
         cout << this->extractMin() << " ";
@@ -77,10 +78,12 @@ electric::electric(int amount, int regular, int discount) : BIKE(amount){
     this->regular_fee = regular;
     this->discount_fee = discount;
 };
+
 lady::lady(int amount, int regular, int discount) : BIKE(amount){
     this->regular_fee = regular;
     this->discount_fee = discount;
 };
+
 road::road(int amount, int regular, int discount) : BIKE(amount){
     this->regular_fee = regular;
     this->discount_fee = discount;

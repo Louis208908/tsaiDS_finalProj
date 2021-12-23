@@ -73,17 +73,18 @@ int main(void)
             requestStream << rental_company::rent_handling(company, station_id, user_id, bikeType, timeRent) << endl;
         }
         else if(serviceType == "return"){
-            requestStream << endl;
+            // requestStream << endl;
             // cout << "returning bike" << endl;
             userStream >> station_id;
             userStream >> user_id;
             userStream >> timeReturn;
-            
-            
+            rental_company::return_handling(company, station_id, user_id, timeReturn);
         }
     }
     // map_info::showMap(company->map);
+    cout << "Revenue = " << company->revenue << endl;
     company->showQuota();
+    // company->showQuota();
     // company->showQuota();
 
     return 0;

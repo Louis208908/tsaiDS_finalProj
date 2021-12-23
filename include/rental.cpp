@@ -26,6 +26,7 @@ rental_company::rental_company(class map_info** map){
     this->map = map;
     // this->station_info = new station()[map_info::station_amount + 1];
     this->user_info_manager = new user();
+    this->revenue = 0;
 }
 
 void rental_company::bikeAmountInit(ifstream& stationStream){
@@ -51,32 +52,61 @@ station::station(int station_id, int electric_num, int lady_num, int road_num){
 }
 
 void rental_company::showQuota(){
+    int bikeCount = 0;
     for (int i = 1; i <= map_info::station_amount; i ++){
-        cout << "station_id: " << i << endl;
+        // cout << "station_id: " << i << endl;
+        bikeCount += this->station_info[i]->electric_manager->residual;
+        bikeCount += this->station_info[i]->lady_manager->residual;
+        bikeCount += this->station_info[i]->road_manager->residual;
+        cout  << i <<": " << endl;
+        cout << "electric: ";
         this->station_info[i]->electric_manager->printHeap();
+        cout << "lady: ";
         this->station_info[i]->lady_manager->printHeap();
+        cout << "road: ";
         this->station_info[i]->road_manager->printHeap();
     }
+    cout << "After a day, total bike amount = " << bikeCount << endl;
 }
 
 
 
 
 void station::bikeRegistering(){
+    static int bikeCount = 0;
+    cout << "station id: " << this->station_id << endl;
+    cout << "electric: ";
     for (int i = 0; i < this->electric_manager->quota; i++){
         int bikeId = this->station_id * 100 + i;
+        cout << bikeId << " ";
         this->electric_manager->insert(bikeId);
     }
-
+    bikeCount += this->electric_manager->quota;
+    cout << endl;
+    cout << "lady: ";
+    this->electric_manager->quota = 100 * map_info::station_amount;
     for (int i = 0; i < this->lady_manager->quota; i++){
         int bikeId = this->station_id * 100 + i;
+        cout << bikeId << " ";
         this->lady_manager->insert(bikeId);
     }
-
+    bikeCount += this->lady_manager->quota;
+    cout << endl
+         << "road: ";
+    this->lady_manager->quota = 100 * map_info::station_amount;
     for (int i = 0; i < this->road_manager->quota; i++){
         int bikeId = this->station_id * 100 + i;
+        cout << bikeId << " ";
         this->road_manager->insert(bikeId);
     }
+    bikeCount += this->road_manager->quota;
+    cout << endl;
+    this->road_manager->quota = 100 * map_info::station_amount;
+    // after initializing we expand the quota to the possible maximun number of the whole world
+    // allowing all bikes to returne to the same station
+
+    if(this->station_id == map_info::station_amount)
+        cout << "total bike amount = " << bikeCount << endl;
 }
 
 string rental_company::rent_handling(rental_company *company, int stationId, string userId, string bikeType, int rentTime){
@@ -100,7 +130,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
             }
             else{
                 int rentBikeId = company->station_info[stationId]->electric_manager->extractMin();
-                company->user_info_manager->insert(stationId, userId, bikeType, rentTime);
+                company->user_info_manager->insert(stationId, userId, bikeType, rentBikeId, rentTime);
             }
             break;
         case 2:
@@ -110,7 +140,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
             }
             else{
                 int rentBikeId = company->station_info[stationId]->lady_manager->extractMin();
-                company->user_info_manager->insert(stationId, userId, bikeType, rentTime);
+                company->user_info_manager->insert(stationId, userId, bikeType, rentBikeId, rentTime);
             }
             break;
         case 3:
@@ -120,10 +150,56 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
             }
             else{
                 int rentBikeId = company->station_info[stationId]->road_manager->extractMin();
-                company->user_info_manager->insert(stationId, userId, bikeType, rentTime);
+                company->user_info_manager->insert(stationId, userId, bikeType, rentBikeId,rentTime);
             }
             break;
     }
-    company->user_info_manager->hTable->findUser(userId);
+    company->user_info_manager->findUser(userId);
     return "accept";
+}
+
+void rental_company::return_handling(rental_company * company, int stationId, string userId, int returnTime){
+    int user_id = stoi(userId);
+    node *user = company->user_info_manager->findUser(userId);
+    if(returnTime - user->rentTime > 1440 || returnTime - user->rentTime < 0){
+        cout << "invalid return" << endl;
+        // operation out of a day is invalid
+        return;
+    }
+    
+    int bike_type;
+    if(user->bikeType == "electric")
+        bike_type = 1;
+    else if(user->bikeType == "lady")
+        bike_type = 2;
+    else
+        bike_type = 3;
+
+    int bigger_stationId = user->station_id > stationId ? user->station_id : stationId;
+    int smaller_stationId = user->station_id < stationId ? user->station_id : stationId;
+
+    int shortest_distance = company->map[smaller_stationId]->distance[bigger_stationId];
+    switch(bike_type){
+        case 1:
+            company->station_info[stationId]->electric_manager->insert(user->bikeId);
+            if (returnTime - user->rentTime > shortest_distance)
+                company->revenue += shortest_distance * company->station_info[stationId]->electric_manager->regular_fee;
+            else
+                company->revenue += shortest_distance * company->station_info[stationId]->electric_manager->discount_fee;
+            break;
+        case 2:
+            company->station_info[stationId]->lady_manager->insert(user->bikeId);
+            if(returnTime - user->rentTime > shortest_distance)
+                company->revenue += shortest_distance * company->station_info[stationId]->lady_manager->regular_fee;
+            else
+                company->revenue += shortest_distance * company->station_info[stationId]->lady_manager->discount_fee;
+            break;
+        case 3:
+            company->station_info[stationId]->road_manager->insert(user->bikeId);
+            if(returnTime - user->rentTime > shortest_distance)
+                company->revenue += shortest_distance * company->station_info[stationId]->road_manager->regular_fee;
+            else
+                company->revenue += shortest_distance * company->station_info[stationId]->road_manager->discount_fee;
+            break;
+    }
 }
