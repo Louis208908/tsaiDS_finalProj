@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/home/louis/c_project/final_proj/include/lib/libmap_lib.a"
+			"path" : "/home/louis/c_project/final_proj/include/lib/librenter_lib.a"
 		}
 	],
 	"backtrace" : 1,
@@ -26,7 +26,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 38,
+				"line" : 50,
 				"parent" : 0
 			},
 			{
@@ -70,9 +70,9 @@
 			]
 		}
 	],
-	"id" : "map_lib::@6890427a1f51a3e7e1df",
-	"name" : "map_lib",
-	"nameOnDisk" : "libmap_lib.a",
+	"id" : "renter_lib::@6890427a1f51a3e7e1df",
+	"name" : "renter_lib",
+	"nameOnDisk" : "librenter_lib.a",
 	"paths" : 
 	{
 		"build" : ".",
@@ -93,7 +93,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "include/map.cpp",
+			"path" : "include/renter.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

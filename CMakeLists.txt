@@ -19,6 +19,7 @@ include_directories(include)
 include_directories(src)
 #引入需要的資料夾
 
+# add_definitions(-DDEBUG)
 
 # option(BUILD_SHARED_LIBS ON)
 set(EXECUTABLE_OUTPUT_PATH ${FINAL_PROJ_SOURCE_DIR}/src)
