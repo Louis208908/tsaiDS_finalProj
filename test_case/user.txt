@@ -1,0 +1,200 @@
+rent 1 lady 00001 0
+return 6 00001 10
+rent 6 electric 00018 19
+return 1 00018 29
+rent 3 road 00059 39
+return 4 00059 53
+rent 3 electric 00074 65
+rent 6 road 00093 65
+return 2 00093 71
+return 5 00074 80
+rent 4 electric 00005 94
+return 6 00005 104
+rent 5 electric 00013 111
+return 4 00013 126
+rent 2 lady 00011 131
+return 1 00011 137
+rent 1 lady 00004 140
+return 6 00004 150
+rent 5 lady 00089 159
+rent 6 road 00036 172
+return 6 00089 173
+return 3 00036 176
+rent 4 lady 00033 218
+rent 3 lady 00068 220
+rent 2 electric 00054 221
+return 6 00033 228
+return 2 00068 230
+return 3 00054 231
+rent 4 road 00058 255
+rent 5 road 00061 259
+return 2 00058 262
+rent 3 lady 00082 266
+return 1 00061 268
+rent 2 lady 00025 274
+rent 3 road 00087 274
+rent 1 road 00034 274
+return 1 00082 275
+return 6 00087 278
+rent 6 road 00086 279
+return 5 00025 282
+rent 4 lady 00029 282
+return 3 00086 283
+return 6 00034 284
+rent 3 road 00066 286
+return 6 00066 290
+return 1 00029 295
+rent 3 electric 00098 329
+return 4 00098 343
+rent 3 electric 00016 380
+return 4 00016 394
+rent 4 lady 00030 399
+return 2 00030 406
+rent 2 lady 00035 411
+return 4 00035 418
+rent 2 road 00040 426
+return 3 00040 436
+rent 2 electric 00096 445
+return 4 00096 452
+rent 5 road 00091 485
+return 2 00091 493
+rent 4 road 00032 494
+rent 4 lady 00053 495
+rent 5 road 00055 500
+return 2 00032 501
+rent 4 lady 00051 501
+return 2 00051 508
+return 5 00053 510
+return 4 00055 515
+rent 2 lady 00050 521
+return 4 00050 528
+rent 4 lady 00012 554
+rent 5 lady 00031 563
+return 5 00012 569
+return 3 00031 578
+rent 1 lady 00085 580
+rent 5 lady 00019 588
+rent 3 electric 00069 589
+return 6 00069 593
+return 4 00085 593
+return 1 00019 597
+rent 1 lady 00077 607
+rent 6 lady 00083 616
+return 4 00077 620
+return 3 00083 620
+rent 2 road 00057 626
+return 6 00057 632
+rent 3 electric 00010 636
+rent 3 road 00009 639
+return 4 00010 650
+return 5 00009 654
+rent 2 road 00079 656
+return 6 00079 662
+rent 5 electric 00020 664
+rent 4 electric 00078 668
+return 6 00020 678
+return 3 00078 682
+rent 6 electric 00045 699
+rent 6 electric 00039 704
+return 2 00045 705
+return 2 00039 710
+rent 6 road 00090 716
+return 2 00090 722
+rent 1 electric 00002 723
+return 2 00002 729
+rent 2 electric 00052 732
+rent 4 electric 00064 732
+return 4 00052 739
+return 1 00064 745
+rent 6 lady 00067 764
+return 5 00067 778
+rent 5 electric 00099 788
+rent 5 lady 00060 789
+rent 2 electric 00024 795
+return 4 00024 802
+return 6 00099 802
+return 3 00060 804
+rent 1 lady 00007 824
+return 6 00007 834
+rent 5 road 00080 838
+rent 2 lady 00006 840
+return 2 00080 846
+return 3 00006 850
+rent 6 lady 00095 851
+return 3 00095 855
+rent 2 electric 00014 862
+return 3 00014 872
+rent 6 electric 00047 876
+return 2 00047 882
+rent 2 road 00088 895
+return 5 00088 903
+rent 3 electric 00041 905
+rent 1 lady 00037 919
+return 4 00041 919
+rent 6 electric 00026 923
+return 5 00037 928
+return 4 00026 933
+rent 1 lady 00038 935
+return 5 00038 944
+rent 5 road 00008 951
+rent 6 electric 00015 954
+rent 5 electric 00043 955
+return 1 00043 964
+rent 5 lady 00022 965
+return 4 00008 966
+return 5 00015 968
+rent 5 lady 00027 971
+return 4 00022 980
+return 1 00027 980
+rent 5 road 00003 999
+rent 6 lady 00076 999
+rent 1 road 00084 999
+rent 4 road 00094 1007
+return 1 00003 1008
+return 4 00084 1012
+return 5 00076 1013
+return 5 00094 1022
+rent 2 road 00092 1028
+rent 3 road 00049 1037
+return 3 00092 1038
+return 1 00049 1046
+rent 3 electric 00028 1068
+return 6 00028 1072
+rent 6 electric 00072 1076
+rent 3 lady 00075 1076
+rent 4 lady 00021 1077
+return 3 00072 1080
+return 6 00075 1080
+rent 2 lady 00017 1088
+return 3 00021 1091
+return 4 00017 1095
+rent 3 lady 00023 1101
+rent 2 road 00062 1103
+rent 6 electric 00073 1108
+return 6 00062 1109
+rent 4 electric 00048 1109
+return 3 00073 1112
+return 4 00023 1115
+return 5 00048 1124
+rent 6 electric 00042 1129
+return 2 00042 1135
+rent 5 electric 00046 1145
+rent 3 electric 00056 1145
+return 1 00056 1154
+return 3 00046 1160
+rent 5 electric 00063 1162
+return 3 00063 1177
+rent 2 electric 00044 1197
+rent 3 electric 00081 1202
+return 5 00044 1205
+return 1 00081 1211
+rent 6 electric 00071 1218
+return 3 00071 1222
+rent 5 road 00070 1227
+return 6 00070 1241
+rent 5 electric 00065 1282
+return 4 00065 1297
+rent 3 electric 00097 1300
+return 5 00097 1315
+rent 1 lady 00100 1430
+return 6 00100 1440
