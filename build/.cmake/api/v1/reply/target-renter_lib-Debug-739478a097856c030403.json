@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/home/louis/c_project/final_proj/include/lib/libmap_lib.a"
+			"path" : "/home/louis/c_project/final_proj/include/lib/librenter_lib.a"
 		}
 	],
 	"backtrace" : 1,
@@ -12,6 +12,7 @@
 		"commands" : 
 		[
 			"add_library",
+			"add_definitions",
 			"include_directories"
 		],
 		"files" : 
@@ -26,17 +27,23 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 32,
+				"line" : 48,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
+				"line" : 24,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
 				"line" : 18,
 				"parent" : 0
 			},
 			{
-				"command" : 1,
+				"command" : 2,
 				"file" : 0,
 				"line" : 19,
 				"parent" : 0
@@ -52,14 +59,21 @@
 					"fragment" : "-g"
 				}
 			],
-			"includes" : 
+			"defines" : 
 			[
 				{
 					"backtrace" : 2,
+					"define" : "TEST"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
 					"path" : "/home/louis/c_project/final_proj/include"
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 4,
 					"path" : "/home/louis/c_project/final_proj/src"
 				}
 			],
@@ -70,9 +84,9 @@
 			]
 		}
 	],
-	"id" : "map_lib::@6890427a1f51a3e7e1df",
-	"name" : "map_lib",
-	"nameOnDisk" : "libmap_lib.a",
+	"id" : "renter_lib::@6890427a1f51a3e7e1df",
+	"name" : "renter_lib",
+	"nameOnDisk" : "librenter_lib.a",
 	"paths" : 
 	{
 		"build" : ".",
@@ -93,7 +107,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "include/map.cpp",
+			"path" : "include/renter.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

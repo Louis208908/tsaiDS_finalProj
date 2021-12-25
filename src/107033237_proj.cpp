@@ -94,11 +94,13 @@ int main(void)
             // requestStream << resp << endl;
         }
         else if(serviceType == "return"){
+            
             // requestStream << endl;
             // cout << "returning bike" << endl;
             userStream >> station_id;
             userStream >> user_id;
             userStream >> timeReturn;
+            response << "return " << station_id << " " << user_id << " " << timeReturn << endl;
             rental_company::return_handling(company, station_id, user_id, timeReturn);
         }
     }
