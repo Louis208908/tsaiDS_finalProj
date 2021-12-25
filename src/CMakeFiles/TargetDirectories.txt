@@ -1,6 +1,0 @@
-/home/louis/c_project/final_proj/src/CMakeFiles/edit_cache.dir
-/home/louis/c_project/final_proj/src/CMakeFiles/rebuild_cache.dir
-/home/louis/c_project/final_proj/src/CMakeFiles/107033237_proj.dir
-/home/louis/c_project/final_proj/src/CMakeFiles/renter_lib.dir
-/home/louis/c_project/final_proj/src/CMakeFiles/map_lib.dir
-/home/louis/c_project/final_proj/src/CMakeFiles/rental_lib.dir
