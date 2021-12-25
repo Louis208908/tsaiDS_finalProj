@@ -1,27 +1,27 @@
 [
 {
   "directory": "/home/louis/c_project/final_proj/build",
-  "command": "/usr/bin/x86_64-linux-gnu-g++-8 -DTEST -I/home/louis/c_project/final_proj/include -I/home/louis/c_project/final_proj/src -g -o CMakeFiles/renter_lib.dir/include/renter.cpp.o -c /home/louis/c_project/final_proj/include/renter.cpp",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-8  -I/home/louis/c_project/final_proj/include -I/home/louis/c_project/final_proj/src -g -o CMakeFiles/renter_lib.dir/include/renter.cpp.o -c /home/louis/c_project/final_proj/include/renter.cpp",
   "file": "/home/louis/c_project/final_proj/include/renter.cpp"
 },
 {
   "directory": "/home/louis/c_project/final_proj/build",
-  "command": "/usr/bin/x86_64-linux-gnu-g++-8 -DTEST -I/home/louis/c_project/final_proj/include -I/home/louis/c_project/final_proj/src -g -o CMakeFiles/map_lib.dir/include/map.cpp.o -c /home/louis/c_project/final_proj/include/map.cpp",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-8  -I/home/louis/c_project/final_proj/include -I/home/louis/c_project/final_proj/src -g -o CMakeFiles/map_lib.dir/include/map.cpp.o -c /home/louis/c_project/final_proj/include/map.cpp",
   "file": "/home/louis/c_project/final_proj/include/map.cpp"
 },
 {
   "directory": "/home/louis/c_project/final_proj/build",
-  "command": "/usr/bin/x86_64-linux-gnu-g++-8 -DTEST -I/home/louis/c_project/final_proj/include -I/home/louis/c_project/final_proj/src -g -o CMakeFiles/rental_lib.dir/include/rental.cpp.o -c /home/louis/c_project/final_proj/include/rental.cpp",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-8  -I/home/louis/c_project/final_proj/include -I/home/louis/c_project/final_proj/src -g -o CMakeFiles/rental_lib.dir/include/rental.cpp.o -c /home/louis/c_project/final_proj/include/rental.cpp",
   "file": "/home/louis/c_project/final_proj/include/rental.cpp"
 },
 {
   "directory": "/home/louis/c_project/final_proj/build",
-  "command": "/usr/bin/x86_64-linux-gnu-g++-8 -DTEST -I/home/louis/c_project/final_proj/include -I/home/louis/c_project/final_proj/src -g -o CMakeFiles/rental_lib.dir/include/bike.cpp.o -c /home/louis/c_project/final_proj/include/bike.cpp",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-8  -I/home/louis/c_project/final_proj/include -I/home/louis/c_project/final_proj/src -g -o CMakeFiles/rental_lib.dir/include/bike.cpp.o -c /home/louis/c_project/final_proj/include/bike.cpp",
   "file": "/home/louis/c_project/final_proj/include/bike.cpp"
 },
 {
   "directory": "/home/louis/c_project/final_proj/build",
-  "command": "/usr/bin/x86_64-linux-gnu-g++-8 -DTEST -I/home/louis/c_project/final_proj/include -I/home/louis/c_project/final_proj/src -g -o CMakeFiles/107033237_proj.dir/src/107033237_proj.cpp.o -c /home/louis/c_project/final_proj/src/107033237_proj.cpp",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-8  -I/home/louis/c_project/final_proj/include -I/home/louis/c_project/final_proj/src -g -o CMakeFiles/107033237_proj.dir/src/107033237_proj.cpp.o -c /home/louis/c_project/final_proj/src/107033237_proj.cpp",
   "file": "/home/louis/c_project/final_proj/src/107033237_proj.cpp"
 }
 ]

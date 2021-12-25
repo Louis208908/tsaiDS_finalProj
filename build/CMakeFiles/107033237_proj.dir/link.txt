@@ -1,1 +1,1 @@
-/usr/bin/x86_64-linux-gnu-g++-8 -g CMakeFiles/107033237_proj.dir/src/107033237_proj.cpp.o -o ../src/107033237_proj  ../include/lib/libmap_lib.a ../include/lib/librental_lib.a ../include/lib/librenter_lib.a 
+/usr/bin/x86_64-linux-gnu-g++-8 -g CMakeFiles/107033237_proj.dir/src/107033237_proj.cpp.o -o 107033237_proj  ../include/lib/libmap_lib.a ../include/lib/librental_lib.a ../include/lib/librenter_lib.a 
