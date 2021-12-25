@@ -20,6 +20,10 @@ include_directories(src)
 #引入需要的資料夾
 
 # add_definitions(-DDEBUG)
+<<<<<<< HEAD
+=======
+add_definitions(-DTEST)
+>>>>>>> 81c675e30e8f19d415e34ec6f7864e9c1850e6bf
 
 # option(BUILD_SHARED_LIBS ON)
 set(EXECUTABLE_OUTPUT_PATH ${FINAL_PROJ_SOURCE_DIR}/src)
