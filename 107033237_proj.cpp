@@ -4,7 +4,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "dirent.h"
-#include "../include/rental_company.h"
+#include "./include/rental_company.h"
 
 using namespace std;
 
@@ -90,6 +90,7 @@ int main(void)
             userStream >> station_id;
             userStream >> user_id;
             userStream >> timeReturn;
+            response << "retrun " << station_id  << " " << user_id << " " << timeReturn << endl;
             rental_company::return_handling(company, station_id, user_id, timeReturn);
         }
     }
@@ -100,10 +101,11 @@ int main(void)
          << "Revenue = " << company->revenue << endl
          << "------------------------------" << endl;
 
-    status << endl
-         << "------------------------------" << endl
-         << "Revenue = " << company->revenue << endl
-         << "------------------------------" << endl;
+    // status << endl
+    //      << "------------------------------" << endl
+    //      << "Revenue = " << company->revenue << endl
+    //      << "------------------------------" << endl;
+    status << company->revenue << endl;
 
     status.close();
     response.close();
