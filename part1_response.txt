@@ -1,0 +1,200 @@
+rent 1 lady 00001 0
+accept
+rent 6 electric 00018 19
+accept
+rent 3 road 00059 39
+accept
+rent 3 electric 00074 65
+accept
+rent 6 road 00093 65
+accept
+rent 4 electric 00005 94
+accept
+rent 5 electric 00013 111
+accept
+rent 2 lady 00011 131
+accept
+rent 1 lady 00004 140
+accept
+rent 5 lady 00089 159
+accept
+rent 6 road 00036 172
+accept
+rent 4 lady 00033 218
+accept
+rent 3 lady 00068 220
+accept
+rent 2 electric 00054 221
+accept
+rent 4 road 00058 255
+accept
+rent 5 road 00061 259
+accept
+rent 3 lady 00082 266
+accept
+rent 2 lady 00025 274
+accept
+rent 3 road 00087 274
+accept
+rent 1 road 00034 274
+accept
+rent 6 road 00086 279
+accept
+rent 4 lady 00029 282
+accept
+rent 3 road 00066 286
+accept
+rent 3 electric 00098 329
+accept
+rent 3 electric 00016 380
+accept
+rent 4 lady 00030 399
+accept
+rent 2 lady 00035 411
+accept
+rent 2 road 00040 426
+accept
+rent 2 electric 00096 445
+accept
+rent 5 road 00091 485
+accept
+rent 4 road 00032 494
+accept
+rent 4 lady 00053 495
+accept
+rent 5 road 00055 500
+accept
+rent 4 lady 00051 501
+accept
+rent 2 lady 00050 521
+accept
+rent 4 lady 00012 554
+accept
+rent 5 lady 00031 563
+accept
+rent 1 lady 00085 580
+accept
+rent 5 lady 00019 588
+accept
+rent 3 electric 00069 589
+accept
+rent 1 lady 00077 607
+accept
+rent 6 lady 00083 616
+accept
+rent 2 road 00057 626
+accept
+rent 3 electric 00010 636
+accept
+rent 3 road 00009 639
+accept
+rent 2 road 00079 656
+accept
+rent 5 electric 00020 664
+accept
+rent 4 electric 00078 668
+accept
+rent 6 electric 00045 699
+accept
+rent 6 electric 00039 704
+accept
+rent 6 road 00090 716
+accept
+rent 1 electric 00002 723
+accept
+rent 2 electric 00052 732
+accept
+rent 4 electric 00064 732
+accept
+rent 6 lady 00067 764
+accept
+rent 5 electric 00099 788
+accept
+rent 5 lady 00060 789
+accept
+rent 2 electric 00024 795
+accept
+rent 1 lady 00007 824
+accept
+rent 5 road 00080 838
+accept
+rent 2 lady 00006 840
+accept
+rent 6 lady 00095 851
+accept
+rent 2 electric 00014 862
+accept
+rent 6 electric 00047 876
+accept
+rent 2 road 00088 895
+accept
+rent 3 electric 00041 905
+accept
+rent 1 lady 00037 919
+accept
+rent 6 electric 00026 923
+accept
+rent 1 lady 00038 935
+accept
+rent 5 road 00008 951
+accept
+rent 6 electric 00015 954
+accept
+rent 5 electric 00043 955
+accept
+rent 5 lady 00022 965
+accept
+rent 5 lady 00027 971
+accept
+rent 5 road 00003 999
+accept
+rent 6 lady 00076 999
+accept
+rent 1 road 00084 999
+accept
+rent 4 road 00094 1007
+accept
+rent 2 road 00092 1028
+accept
+rent 3 road 00049 1037
+accept
+rent 3 electric 00028 1068
+accept
+rent 6 electric 00072 1076
+accept
+rent 3 lady 00075 1076
+accept
+rent 4 lady 00021 1077
+accept
+rent 2 lady 00017 1088
+accept
+rent 3 lady 00023 1101
+accept
+rent 2 road 00062 1103
+accept
+rent 6 electric 00073 1108
+accept
+rent 4 electric 00048 1109
+accept
+rent 6 electric 00042 1129
+accept
+rent 5 electric 00046 1145
+accept
+rent 3 electric 00056 1145
+accept
+rent 5 electric 00063 1162
+accept
+rent 2 electric 00044 1197
+accept
+rent 3 electric 00081 1202
+accept
+rent 6 electric 00071 1218
+accept
+rent 5 road 00070 1227
+accept
+rent 5 electric 00065 1282
+accept
+rent 3 electric 00097 1300
+accept
+rent 1 lady 00100 1430
+accept

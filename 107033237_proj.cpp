@@ -131,7 +131,7 @@ int main(void)
 
 
 void fileRefresh(){
-#ifdef TEST
+#ifndef TEST
     status << "";
     status.close();
     status.open("./part1_status.txt", ofstream::app);
@@ -141,9 +141,9 @@ void fileRefresh(){
 #else
     status << "";
     status.close();
-    status.open("../output/part1_status.txt", ofstream::app);
+    status.open("./output/part1_status.txt", ofstream::app);
     response << "";
     response.close();
-    response.open("../output/part1_response.txt", ofstream::app);
+    response.open("./output/part1_response.txt", ofstream::app);
 #endif
 }
