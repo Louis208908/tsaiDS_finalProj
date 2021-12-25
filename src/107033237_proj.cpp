@@ -131,7 +131,7 @@ int main(void)
 
 
 void fileRefresh(){
-#ifdef TEST
+#ifndef TEST
     status << "";
     status.close();
     status.open("./part1_status.txt", ofstream::app);
