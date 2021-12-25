@@ -8,16 +8,7 @@
 
 using namespace std;
 
-#ifdef test
-ifstream mapStream("../DS_testcase/open_basic1/test_case/map.txt", ifstream::in);
-ifstream stationStream("../DS_testcase/open_basic1/test_case/station.txt", ifstream::in);
-ifstream userStream("../DS_testcase/open_basic1/test_case/user.txt", ifstream::in);
-ifstream feeStream("../DS_testcase/open_basic1/test_case/fee.txt", ifstream::in);
-ofstream requestStream("../DS_testcase/open_basic1/test_case/request.txt", ofstream::out);
-ofstream status("../output/part1_status.txt", ofstream::out);
-ofstream response("../output/part1_response.txt", ofstream::out);
-static ofstream checkStream("../DS_testcase/open_basic1/test_case/check.txt", ofstream::out);
-#else
+
 ifstream mapStream("./test_case/map.txt", ifstream::in);
 ifstream stationStream("./test_case/station.txt", ifstream::in);
 ifstream userStream("./test_case/user.txt", ifstream::in);
@@ -26,7 +17,7 @@ ofstream requestStream("./test_case/request.txt", ofstream::out);
 ofstream status("./part1_status.txt", ofstream::out);
 ofstream response("./part1_response.txt", ofstream::out);
 static ofstream checkStream("./DS_testcase/open_basic1/test_case/check.txt", ofstream::out);
-#endif
+
 
 void fileRefresh();
 
@@ -131,19 +122,12 @@ int main(void)
 
 
 void fileRefresh(){
-#ifndef TEST
+    
     status << "";
     status.close();
     status.open("./part1_status.txt", ofstream::app);
     response << "";
     response.close();
     response.open("./part1_response.txt", ofstream::app);
-#else
-    status << "";
-    status.close();
-    status.open("./output/part1_status.txt", ofstream::app);
-    response << "";
-    response.close();
-    response.open("./output/part1_response.txt", ofstream::app);
-#endif
+
 }
