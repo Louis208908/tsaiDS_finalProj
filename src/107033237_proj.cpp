@@ -8,7 +8,7 @@
 
 using namespace std;
 
-#ifdef test
+#ifdef TEST
 ifstream mapStream("../DS_testcase/open_basic1/test_case/map.txt", ifstream::in);
 ifstream stationStream("../DS_testcase/open_basic1/test_case/station.txt", ifstream::in);
 ifstream userStream("../DS_testcase/open_basic1/test_case/user.txt", ifstream::in);
