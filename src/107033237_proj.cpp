@@ -4,7 +4,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "dirent.h"
-#include "rental_company.h"
+#include "../include/rental_company.h"
 
 using namespace std;
 
