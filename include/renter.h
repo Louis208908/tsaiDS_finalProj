@@ -12,7 +12,7 @@ class user{
 public:
     class hashTable *hTable;
     user();
-    void insert(int stationId, string user_id, string bikeType, int bikeId,int rentTime);
+    void insert(int stationId, string user_id, string bikeType, int bikeId,int rentTime, string policy);
     class node *findUser(string user_id);
 };
 
@@ -26,14 +26,17 @@ public:
 
 class node{
     public:
-    class node *next;
-    string user_id;
-    int bikeId;
-    int station_id;
-    int rentTime;
-    string bikeType;
-    node(int stationId, string user_id, string bikeType, int bikeId,int rentTime);
-    static node* insert(node* root,int stationId ,string user_id, string bikeType, int bikeId,int rentTime);
+        string policy;
+        // use to record whether he/she is treated with special operation
+        // Ex. wait, change bikeType
+        class node *next;
+        string user_id;
+        int bikeId;
+        int station_id;
+        int rentTime;
+        string bikeType;
+        node(int stationId, string user_id, string bikeType, int bikeId, int rentTime, string policy);
+        static node *insert(node *root, int stationId, string user_id, string bikeType, int bikeId, int rentTime, string policy);
 };
 
 #endif

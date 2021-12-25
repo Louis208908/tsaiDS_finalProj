@@ -143,7 +143,9 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
         bike_type = 2;
     else if(bikeType == "road")
         bike_type = 3;
-    
+
+    string policy = "normal";
+
     switch(bike_type){
         case 1:
             if(company->station_info[stationId]->electric_manager->residual <= 0){
@@ -152,7 +154,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
             }
             else{
                 int rentBikeId = company->station_info[stationId]->electric_manager->extractMin();
-                company->user_info_manager->insert(stationId, userId, bikeType, rentBikeId, rentTime);
+                company->user_info_manager->insert(stationId, userId, bikeType, rentBikeId, rentTime, policy);
             }
             break;
         case 2:
@@ -162,7 +164,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
             }
             else{
                 int rentBikeId = company->station_info[stationId]->lady_manager->extractMin();
-                company->user_info_manager->insert(stationId, userId, bikeType, rentBikeId, rentTime);
+                company->user_info_manager->insert(stationId, userId, bikeType, rentBikeId, rentTime, policy);
             }
             break;
         case 3:
@@ -172,7 +174,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
             }
             else{
                 int rentBikeId = company->station_info[stationId]->road_manager->extractMin();
-                company->user_info_manager->insert(stationId, userId, bikeType, rentBikeId,rentTime);
+                company->user_info_manager->insert(stationId, userId, bikeType, rentBikeId,rentTime, policy);
             }
             break;
     }

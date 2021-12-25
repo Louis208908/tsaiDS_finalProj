@@ -5,16 +5,17 @@ extern ofstream requestStream;
 
 static ofstream checkStream("../DS_testcase/open_basic1/test_case/check2.txt", ofstream::out);
 
-node *node::insert(node *root, int stationId, string user_id, string bikeType, int bikeId, int rentTime)
+node *node::insert(node *root, int stationId, string user_id, string bikeType, int bikeId, int rentTime, string policy)
 {
     if (root == nullptr)
-        return new node(stationId, user_id, bikeType, bikeId, rentTime);
-    root->next = insert(root->next, stationId, user_id, bikeType, bikeId, rentTime);
+        return new node(stationId, user_id, bikeType, bikeId, rentTime, policy);
+    root->next = insert(root->next, stationId, user_id, bikeType, bikeId, rentTime, policy);
     return root;
 }
 
-node::node(int stationId, string user_id, string bikeType, int bikeId, int rentTime)
+node::node(int stationId, string user_id, string bikeType, int bikeId, int rentTime, string policy)
 {
+    this->policy = policy;
     this->bikeType = bikeType;
     this->rentTime = rentTime;
     this->user_id = user_id;
@@ -59,9 +60,9 @@ user::user()
     this->hTable = new hashTable(map_info::station_amount);
 }
 
-void user::insert(int stationId, string user_id, string bikeType, int bikeId, int rentTime)
+void user::insert(int stationId, string user_id, string bikeType, int bikeId, int rentTime, string policy)
 {
     int userId = stoi(user_id);
     int key = hashKey(userId, this->hTable->hashFcn);
-    this->hTable->user_info[key] = node::insert(this->hTable->user_info[key], stationId, user_id, bikeType, bikeId, rentTime);
+    this->hTable->user_info[key] = node::insert(this->hTable->user_info[key], stationId, user_id, bikeType, bikeId, rentTime, policy);
 }
