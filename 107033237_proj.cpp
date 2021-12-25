@@ -3,7 +3,6 @@
 #include "bits/stdc++.h"
 #include "stdio.h"
 #include "stdlib.h"
-#include "dirent.h"
 #include "./include/rental_company.h"
 
 using namespace std;
@@ -21,27 +20,6 @@ static ofstream checkStream("./DS_testcase/open_basic1/test_case/check.txt", ofs
 
 void fileRefresh();
 
-void findFiles(string path)
-{
-    DIR *dir = NULL;
-    struct dirent *entry;
-    int fileAmount = 0;
-    if ((dir = opendir(&path[0])) == NULL)
-    {
-        printf("opendir failed!");
-        return;
-    }
-    else
-    {
-        while (entry = readdir(dir))
-        {
-            cout << entry->d_name << endl;
-            // if (strstr(entry->d_name, ".csv") != NULL)
-            //     fileAmount++;
-        }
-        closedir(dir);
-    }
-}
 
 int map_info::station_amount;
 
