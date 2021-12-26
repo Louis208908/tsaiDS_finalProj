@@ -24,7 +24,8 @@ void fileRefresh();
 int map_info::station_amount;
 int rental_company::totalBikeInventory;
 
-int main(void){
+int main(void) {
+  
     clock_t start = clock();
     fileRefresh();
     map_info::findMaxId(mapStream);
