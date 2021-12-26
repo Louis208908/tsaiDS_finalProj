@@ -51,7 +51,8 @@ void findFiles(string path){
 int map_info::station_amount;
 int rental_company::totalBikeInventory;
 
-int main(void){
+int main(void) {
+  
     clock_t start = clock();
     fileRefresh();
     map_info::findMaxId(mapStream);
@@ -113,7 +114,9 @@ int main(void){
     mapStream.close();
 
     clock_t end = clock();
-    cout << "Time cost: " << (double)(end -  start)/ CLOCKS_PER_SEC * 1000 << "ms." << endl;
+    cout << "Time cost: " << (double)(end - start) / CLOCKS_PER_SEC * 1000
+         << "ms." << endl;
+    
     return 0;
 }
 
