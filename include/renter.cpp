@@ -29,9 +29,7 @@ hashTable::hashTable(int hashFcn)
     this->user_info = (class node **)malloc(sizeof(class node *) * hashFcn);
     this->hashFcn = hashFcn;
     for (int i = 0; i < hashFcn; i++)
-    {
         this->user_info[i] = nullptr;
-    }
 }
 
 node *user::findUser(string user_id)
@@ -41,12 +39,9 @@ node *user::findUser(string user_id)
     node *current = this->hTable->user_info[key];
 
     while (current != nullptr && current->user_id != user_id)
-    {
         current = current->next;
-    }
-    if (current->user_id == user_id)
-    {
-
+    
+    if (current->user_id == user_id){
         // cout << current->user_id << " " << current->bikeType << " " << current->rentTime << endl;
         // checkStream << current->user_id << " " << current->bikeType << " " << current->rentTime << endl;
         return current;
@@ -57,7 +52,9 @@ node *user::findUser(string user_id)
 
 user::user()
 {
-    this->hTable = new hashTable(map_info::station_amount);
+    // this->hTable = new hashTable(map_info::station_amount);
+    this->hTable = new hashTable(rental_company::totalBikeInventory);
+    //using total bike amount in the world as the hashFcn
 }
 
 void user::insert(int stationId, string user_id, string bikeType, int bikeId, int rentTime, string policy)

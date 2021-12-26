@@ -3,6 +3,7 @@
 
 extern ifstream feeStream;
 extern ofstream status;
+extern ifstream stationStream;
 extern ofstream response;
 
 int electric_fee[2];
@@ -26,7 +27,7 @@ rental_company::rental_company(class map_info** map){
     feeStream >> waiting_fee >> reduced_rate >> transfer_fee;
     this->station_info = (class station **)malloc(sizeof(class station) * (map_info::station_amount + 1));
     this->map = map;
-    // this->station_info = new station()[map_info::station_amount + 1];
+    this->bikeAmountInit(stationStream);
     this->user_info_manager = new user();
     this->revenue = 0;
 
@@ -124,6 +125,9 @@ void station::bikeRegistering(){
     this->road_manager->quota = 100 * map_info::station_amount;
     // after initializing we expand the quota to the possible maximun number of the whole world
     // allowing all bikes to returne to the same station
+
+    if (this->station_id == map_info::station_amount)
+        rental_company::totalBikeInventory = bikeCount;
 
     #ifdef DEBUG
     if(this->station_id == map_info::station_amount)

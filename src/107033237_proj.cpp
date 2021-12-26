@@ -53,6 +53,7 @@ void findFiles(string path)
 }
 
 int map_info::station_amount;
+int rental_company::totalBikeInventory;
 
 int main(void)
 {
@@ -68,7 +69,6 @@ int main(void)
 #endif
 
     rental_company *company = new rental_company(station_info);
-    company->bikeAmountInit(stationStream);
 
     while(!userStream.eof()){
         string serviceType;

@@ -24,13 +24,19 @@ renter.h
 bike.h
 /home/louis/c_project/final_proj/include/bike.h
 
-/home/louis/c_project/final_proj/include/renter.cpp
-renter.h
-/home/louis/c_project/final_proj/include/renter.h
-rental_company.h
-/home/louis/c_project/final_proj/include/rental_company.h
-
 /home/louis/c_project/final_proj/include/renter.h
 bits/stdc++.h
 /home/louis/c_project/final_proj/include/bits/stdc++.h
+
+/home/louis/c_project/final_proj/src/107033237_proj.cpp
+bits/stdc++.h
+/home/louis/c_project/final_proj/src/bits/stdc++.h
+stdio.h
+/home/louis/c_project/final_proj/src/stdio.h
+stdlib.h
+/home/louis/c_project/final_proj/src/stdlib.h
+dirent.h
+/home/louis/c_project/final_proj/src/dirent.h
+../include/rental_company.h
+/home/louis/c_project/final_proj/include/rental_company.h
 
