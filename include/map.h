@@ -18,6 +18,7 @@ typedef class map_info
         static void buildMap(ifstream& mapStream, map_info **station);
         static void findMaxId(ifstream& mapStream);
         static void showMap(map_info **station);
+        static void findMinDistance(map_info **station);
 
 }map;
 

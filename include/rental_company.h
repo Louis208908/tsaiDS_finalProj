@@ -18,6 +18,7 @@ public:
     rental_company(class map_info** map);
     class station **station_info;
     class user *user_info_manager;
+    static int totalBikeInventory;
     void bikeAmountInit(ifstream &stationStream);
     void showQuota();
     static string rent_handling(rental_company *company, int stationId, string userId, string bikeType, int rentTime);
