@@ -51,9 +51,11 @@ void map_info::buildMap(ifstream& mapStream, map_info **station){
         int input2 = 0;
         mapStream >> input2;
         station[input]->station_adjacency[input2] = true;
+        station[input2]->station_adjacency[input] = true;
         int distance = 0;
         mapStream >> distance;
         station[input]->distance[input2] = distance;
+        station[input2]->distance[input] = distance;
     }
 }
 
@@ -65,4 +67,28 @@ void map_info::showMap(map_info **station){
                 cout << i << " " << j << ", distance = " << station[i]->distance[j] << endl;
         }
     }
+}
+
+
+void map_info::findMinDistance(map_info **station) {
+    bool visited[map_info::station_amount + 1];
+    map_info **map = (map_info **)malloc(sizeof(map_info *) *
+                                         (map_info::station_amount + 1));
+
+    for (int i = 1; i <= map_info::station_amount; i++) {
+        map[i] = (map_info *)malloc(sizeof(map_info) * (map_info::station_amount + 1));
+    }
+    for (int i = 1; i <= map_info::station_amount; i++) {
+
+        for (int j = 1; j <= map_info::station_amount; j++) {
+            for (int k = 1; k <= map_info::station_amount; k++) {
+                if (station[i]->distance[j] >station[i]->distance[k] + station[j]->distance[k])
+                    station[i]->distance[j] = station[i]->distance[k] + station[k]->distance[j];
+            }
+        }
+        for (int j = 1; j <= map_info::station_amount; j++)
+            printf("%3d ", station[i]->distance[j]);
+        cout << endl;
+    }
+
 }

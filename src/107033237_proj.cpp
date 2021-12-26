@@ -61,6 +61,7 @@ int main(void){
     map_info::findMaxId(mapStream);
     class map_info *station_info[map_info::station_amount + 1];
     map_info::buildMap(mapStream, station_info);
+    map_info::findMinDistance(station_info);
 
 #ifdef DEBUG
     map_info::showMap(station_info);
@@ -101,8 +102,9 @@ int main(void){
             userStream >> user_id;
             userStream >> timeReturn;
             response << "return " << station_id << " " << user_id << " " << timeReturn << endl;
-
             rental_company::return_handling(company, station_id, user_id,timeReturn);
+            // response << "revenue: " << company->revenue <<endl;
+
             // cout << "get response" << endl;
 
         }
