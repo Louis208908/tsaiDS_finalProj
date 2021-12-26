@@ -152,8 +152,14 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
 
     switch(bike_type){
         case 1:
-            if(company->station_info[stationId]->electric_manager->residual <= 0){
-                cout << "electric not available now" << endl;
+            if (company->station_info[stationId]->electric_manager->residual <= 0) {
+              policy = "reject";
+                #ifdef DEBBUG
+                    cout << "electric not available now" << endl;
+                    cout << "UserId " << userId << " has been rejected!" << endl;
+                #endif
+                company->user_info_manager->insert(stationId, userId, bikeType,rentTime, policy);
+
                 return "reject";
             }
             else{
@@ -163,7 +169,13 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
             break;
         case 2:
             if(company->station_info[stationId]->lady_manager->residual <= 0){
+              policy = "reject";
+                              #ifdef DEBBUG
+
                 cout << "lady not available now" << endl;
+                cout << "UserId " << userId << " has been rejected!" << endl;
+#endif
+                company->user_info_manager->insert(stationId, userId, bikeType,rentTime, policy);
                 return "reject";
             }
             else{
@@ -173,7 +185,12 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
             break;
         case 3:
             if(company->station_info[stationId]->road_manager->residual <= 0){
+              policy = "reject";
+              #ifdef DEBUG
                 cout << "road not available now" << endl;
+                cout << "UserId " << userId << " has been rejected!" << endl;
+                #endif
+                company->user_info_manager->insert(stationId, userId, bikeType,rentTime, policy);
                 return "reject";
             }
             else{
@@ -189,6 +206,13 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
 void rental_company::return_handling(rental_company * company, int stationId, string userId, int returnTime){
     int user_id = stoi(userId);
     node *user = company->user_info_manager->findUser(userId);
+    if (user->policy == "reject") {
+      #ifdef DEBUG
+      cout << "the user has been rejected, no bike has been rent" << endl;
+      #endif
+      return ;
+    }
+    // cout << "get user data" << endl;
     if(returnTime - user->rentTime > 1440 || returnTime - user->rentTime < 0){
         cout << "invalid return" << endl;
         // operation out of a day is invalid

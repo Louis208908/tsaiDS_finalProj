@@ -31,6 +31,7 @@ public:
      * @param policy   treatment to user while the required bikeType is unavailable
      */
     void insert(int stationId, string user_id, string bikeType, int bikeId,int rentTime, string policy);
+    void insert(int stationId, string user_id, string bikeType, int rentTime, string policy);
 
     /**
      * @brief  find the user renting data
@@ -78,7 +79,9 @@ class node{
         int rentTime;
         string bikeType;
         node(int stationId, string user_id, string bikeType, int bikeId, int rentTime, string policy);
+        node(int stationId, string user_id, string bikeType, int rentTime, string policy);
         static node *insert(node *root, int stationId, string user_id, string bikeType, int bikeId, int rentTime, string policy);
+        static node *insert(node *root, int stationId, string user_id, string bikeType, int rentTime, string policy);
 };
 
 #endif

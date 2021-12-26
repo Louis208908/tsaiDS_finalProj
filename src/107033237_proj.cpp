@@ -9,10 +9,10 @@
 using namespace std;
 
 #ifdef TEST
-ifstream mapStream("../DS_testcase/open_basic1/test_case/map.txt", ifstream::in);
-ifstream stationStream("../DS_testcase/open_basic1/test_case/station.txt", ifstream::in);
-ifstream userStream("../DS_testcase/open_basic1/test_case/user.txt", ifstream::in);
-ifstream feeStream("../DS_testcase/open_basic1/test_case/fee.txt", ifstream::in);
+ifstream mapStream("../DS_testcase/open_basic2/test_case/map.txt", ifstream::in);
+ifstream stationStream("../DS_testcase/open_basic2/test_case/station.txt", ifstream::in);
+ifstream userStream("../DS_testcase/open_basic2/test_case/user.txt", ifstream::in);
+ifstream feeStream("../DS_testcase/open_basic2/test_case/fee.txt", ifstream::in);
 ofstream requestStream("../DS_testcase/open_basic1/test_case/request.txt", ofstream::out);
 ofstream status("../output/part1_status.txt", ofstream::out);
 ofstream response("../output/part1_response.txt", ofstream::out);
@@ -77,7 +77,8 @@ int main(void)
         int timeReturn;
         string bikeType;
         userStream >> serviceType;
-        if(serviceType == "rent"){
+        if (serviceType == "rent") {
+            // cout << "rent request handling" << endl;
             // cout << "renting bike" << endl;
             userStream >> station_id;
             userStream >> bikeType;
@@ -87,20 +88,24 @@ int main(void)
             // cout << station_id << " " << bikeType << " " << user_id << " " << timeRent << "." << endl;
             // requestStream << "rent "<< station_id << " " << bikeType << " " << user_id << " " << timeRent <<  endl;
             // checkStream << user_id << " " << bikeType << " " << timeRent << endl;
-            response << "rent "<< station_id << " " << bikeType << " " << user_id << " " << timeRent <<  endl;
+            response << "rent " << station_id << " " << bikeType << " "
+                     << user_id << " " << timeRent << endl;
             string resp = rental_company::rent_handling(company, station_id, user_id, bikeType, timeRent);
             response << resp << endl;
             // requestStream << resp << endl;
         }
         else if(serviceType == "return"){
-            
-            // requestStream << endl;
+            // cout << "return request handling" << endl;
+            // requestStream << endl;  
             // cout << "returning bike" << endl;
             userStream >> station_id;
             userStream >> user_id;
             userStream >> timeReturn;
             response << "return " << station_id << " " << user_id << " " << timeReturn << endl;
-            rental_company::return_handling(company, station_id, user_id, timeReturn);
+
+            rental_company::return_handling(company, station_id, user_id,timeReturn);
+            // cout << "get response" << endl;
+
         }
     }
     
