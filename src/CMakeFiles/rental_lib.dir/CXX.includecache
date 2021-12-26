@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/home/louis/c_project/final_proj/include/bike.cpp
+bike.h
+/home/louis/c_project/final_proj/include/bike.h
+rental_company.h
+/home/louis/c_project/final_proj/include/rental_company.h
+
 /home/louis/c_project/final_proj/include/bike.h
 bits/stdc++.h
 /home/louis/c_project/final_proj/include/bits/stdc++.h

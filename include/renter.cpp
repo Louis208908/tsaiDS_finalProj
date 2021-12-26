@@ -13,13 +13,7 @@ node *node::insert(node *root, int stationId, string user_id, string bikeType, i
     return root;
 }
 
-node *node::insert(node *root, int stationId, string user_id, string bikeType, int rentTime, string policy)
-{
-    if (root == nullptr)
-        return new node(stationId, user_id, bikeType, rentTime, policy);
-    root->next = insert(root->next, stationId, user_id, bikeType, rentTime, policy);
-    return root;
-}
+
 
 node::node(int stationId, string user_id, string bikeType, int bikeId, int rentTime, string policy)
 {
@@ -32,15 +26,7 @@ node::node(int stationId, string user_id, string bikeType, int bikeId, int rentT
     this->next = nullptr;
 }
 
-node::node(int stationId, string user_id, string bikeType, int rentTime, string policy)
-{
-    this->policy = policy;
-    this->bikeType = bikeType;
-    this->rentTime = rentTime;
-    this->user_id = user_id;
-    this->station_id = stationId;
-    this->next = nullptr;
-}
+
 
 hashTable::hashTable(int hashFcn)
 {
@@ -84,9 +70,3 @@ void user::insert(int stationId, string user_id, string bikeType, int bikeId, in
     this->hTable->user_info[key] = node::insert(this->hTable->user_info[key], stationId, user_id, bikeType, bikeId, rentTime, policy);
 }
 
-void user::insert(int stationId, string user_id, string bikeType, int rentTime, string policy)
-{
-    int userId = stoi(user_id);
-    int key = hashKey(userId, this->hTable->hashFcn);
-    this->hTable->user_info[key] = node::insert(this->hTable->user_info[key], stationId, user_id, bikeType, rentTime, policy);
-}

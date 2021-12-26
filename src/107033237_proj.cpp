@@ -9,10 +9,10 @@
 using namespace std;
 
 #ifdef TEST
-ifstream mapStream("../DS_testcase/open_basic2/test_case/map.txt", ifstream::in);
-ifstream stationStream("../DS_testcase/open_basic2/test_case/station.txt", ifstream::in);
-ifstream userStream("../DS_testcase/open_basic2/test_case/user.txt", ifstream::in);
-ifstream feeStream("../DS_testcase/open_basic2/test_case/fee.txt", ifstream::in);
+ifstream mapStream("../DS_testcase/open_basic3/test_case/map.txt", ifstream::in);
+ifstream stationStream("../DS_testcase/open_basic3/test_case/station.txt", ifstream::in);
+ifstream userStream("../DS_testcase/open_basic3/test_case/user.txt", ifstream::in);
+ifstream feeStream("../DS_testcase/open_basic3/test_case/fee.txt", ifstream::in);
 ofstream requestStream("../DS_testcase/open_basic1/test_case/request.txt", ofstream::out);
 ofstream status("../output/part1_status.txt", ofstream::out);
 ofstream response("../output/part1_response.txt", ofstream::out);
@@ -55,8 +55,7 @@ void findFiles(string path)
 int map_info::station_amount;
 int rental_company::totalBikeInventory;
 
-int main(void)
-{
+int main(void){
     clock_t start = clock();
     fileRefresh();
     map_info::findMaxId(mapStream);
