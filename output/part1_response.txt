@@ -345,7 +345,7 @@ accept
 rent 7 road 00504 158
 accept
 rent 8 electric 00888 159
-reject
+accept
 rent 5 electric 00965 160
 accept
 rent 3 road 00955 161
@@ -596,7 +596,7 @@ rent 8 lady 00719 257
 accept
 return 8 00413 258
 rent 9 electric 00305 258
-reject
+accept
 rent 1 lady 00078 258
 accept
 return 6 00175 259
@@ -756,7 +756,7 @@ return 7 00908 321
 rent 6 road 00261 321
 accept
 rent 9 electric 00606 321
-reject
+accept
 return 9 00078 324
 return 7 00145 324
 rent 5 electric 00866 325
@@ -805,7 +805,7 @@ return 6 00089 343
 return 8 00007 343
 return 8 00178 344
 rent 9 electric 00790 344
-reject
+accept
 return 7 00122 344
 rent 9 lady 00993 346
 accept
@@ -969,7 +969,7 @@ return 7 00039 425
 return 1 00321 426
 return 8 00921 427
 rent 9 road 00210 428
-reject
+accept
 return 1 00092 428
 rent 1 electric 00031 429
 accept
@@ -1048,7 +1048,7 @@ rent 4 road 00794 469
 accept
 return 1 00903 470
 rent 9 lady 00396 470
-accept
+reject
 return 1 00289 471
 return 5 00842 471
 return 6 00712 472
@@ -1090,7 +1090,7 @@ rent 5 electric 00570 486
 accept
 return 7 00174 486
 rent 9 electric 00123 486
-accept
+reject
 rent 4 lady 00748 487
 accept
 rent 2 road 00919 487
@@ -1118,13 +1118,13 @@ return 8 00119 497
 rent 8 lady 00940 499
 accept
 rent 9 lady 00361 500
-accept
+reject
 return 2 00130 500
 return 7 00406 500
 return 8 00584 501
 return 2 00026 501
 rent 9 lady 00110 501
-accept
+reject
 return 2 00505 503
 return 1 00862 504
 return 4 00677 504
@@ -1205,7 +1205,7 @@ rent 5 lady 00899 537
 accept
 return 2 00573 538
 rent 3 electric 00390 538
-reject
+accept
 return 7 00476 538
 rent 4 electric 00856 538
 accept
@@ -1277,7 +1277,7 @@ rent 7 electric 00872 570
 accept
 return 3 00627 571
 rent 8 road 00035 572
-reject
+accept
 rent 4 lady 00600 572
 accept
 return 1 00126 573
@@ -1299,7 +1299,7 @@ rent 7 electric 00262 584
 accept
 return 2 00825 584
 rent 9 road 00037 584
-reject
+accept
 return 7 00455 584
 return 8 00461 584
 return 4 00361 585
@@ -1345,7 +1345,7 @@ accept
 return 8 00827 604
 return 5 00498 606
 rent 9 lady 00475 607
-reject
+accept
 rent 7 electric 00453 607
 accept
 return 1 00759 608
@@ -1387,7 +1387,7 @@ return 8 00060 631
 rent 1 electric 00441 633
 accept
 rent 9 road 00025 635
-accept
+reject
 rent 3 lady 00091 635
 accept
 rent 8 electric 00234 635
@@ -1464,7 +1464,7 @@ return 4 00453 679
 rent 6 lady 00478 680
 accept
 rent 9 lady 00135 680
-reject
+accept
 return 5 00831 681
 return 6 00208 682
 return 5 00373 683
@@ -1609,14 +1609,14 @@ accept
 rent 3 electric 00580 761
 accept
 rent 4 lady 00105 762
-reject
+accept
 rent 2 lady 00670 763
 accept
 return 7 00095 764
 rent 8 electric 00424 764
 accept
 rent 1 electric 00769 764
-reject
+accept
 return 6 00079 764
 rent 5 lady 00684 765
 accept
@@ -1734,7 +1734,7 @@ return 7 00580 817
 return 3 00342 818
 return 2 00407 818
 rent 9 lady 00299 818
-reject
+accept
 rent 7 road 00182 818
 accept
 rent 1 road 00437 819
@@ -1810,7 +1810,7 @@ rent 7 lady 00865 847
 accept
 return 1 00018 847
 rent 9 lady 00935 847
-reject
+accept
 rent 5 lady 00248 848
 accept
 return 7 00236 848
@@ -1822,7 +1822,7 @@ rent 9 road 00929 849
 accept
 return 6 00927 849
 rent 3 electric 00177 850
-reject
+accept
 rent 1 road 00694 850
 accept
 rent 5 lady 00405 851
@@ -1869,7 +1869,7 @@ rent 2 electric 00907 870
 accept
 return 6 00043 870
 rent 4 lady 00864 870
-reject
+accept
 return 1 00838 871
 rent 8 electric 00225 872
 accept
@@ -1912,7 +1912,7 @@ rent 4 electric 00426 885
 accept
 return 2 00299 888
 rent 3 road 00763 888
-accept
+reject
 rent 5 lady 00653 891
 accept
 return 7 00248 891
@@ -1994,7 +1994,7 @@ rent 7 road 00265 920
 accept
 return 1 00153 921
 rent 1 electric 00446 922
-reject
+accept
 return 1 00956 922
 return 9 00902 925
 rent 4 electric 00243 926
@@ -2450,7 +2450,7 @@ return 5 00777 1118
 return 5 00786 1119
 return 8 00799 1119
 rent 8 road 00088 1120
-reject
+accept
 rent 4 lady 00496 1120
 accept
 rent 9 electric 00469 1120
@@ -2484,7 +2484,7 @@ accept
 rent 6 road 00900 1133
 accept
 rent 8 lady 00508 1133
-accept
+reject
 rent 5 lady 00172 1135
 accept
 rent 3 road 00272 1136
@@ -2556,10 +2556,10 @@ return 2 00614 1158
 return 7 00881 1158
 return 5 00816 1158
 rent 9 lady 00757 1160
-reject
+accept
 return 4 00626 1161
 rent 6 electric 00876 1161
-reject
+accept
 return 2 00683 1161
 return 1 00112 1162
 rent 3 lady 00728 1162
@@ -2674,7 +2674,7 @@ return 6 00728 1209
 return 6 00970 1211
 return 1 00381 1212
 rent 6 electric 00655 1212
-reject
+accept
 return 2 00944 1212
 return 2 00971 1213
 return 3 00669 1213
@@ -2693,7 +2693,7 @@ return 2 00222 1216
 rent 9 electric 00789 1216
 accept
 rent 6 electric 00013 1216
-reject
+accept
 return 9 00494 1221
 return 3 00891 1221
 return 6 00142 1222
@@ -2851,7 +2851,7 @@ rent 6 road 00875 1287
 accept
 return 7 00252 1287
 rent 9 lady 00338 1289
-reject
+accept
 rent 5 electric 00429 1290
 accept
 return 1 00013 1291

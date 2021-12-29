@@ -13,7 +13,8 @@ extern ofstream response;
 #define leftChild(i) ((2 * (i)) + 1)
 #define rightChild(i) ((2 * (i)) + 2)
 
-BIKE::BIKE(int amount){
+BIKE::BIKE(int amount) {
+    this->rent_amount = 0;
     this->quota = amount;
     this->residual = 0;
     this->storehouse = (int *)malloc(sizeof(int) * 100 * map_info::station_amount);

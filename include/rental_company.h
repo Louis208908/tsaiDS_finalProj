@@ -36,6 +36,7 @@ class station{
         class electric *electric_manager;
         class lady *lady_manager;
         class road *road_manager;
+        int total_rent_amount;
         // class BIKE *electric_manager;
         // class BIKE *lady_manager;
         // class BIKE *road_manager;
