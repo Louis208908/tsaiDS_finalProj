@@ -189,8 +189,8 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
     case 3:
             company->station_info[stationId]->road_manager->rent_amount++;
             company->station_info[stationId]->road_manager->request_rate =
-                (float)company->station_info[stationId] ->road_manager->rent_amount
-                        / company->station_info[stationId]->total_rent_amount;
+                (float)company->station_info[stationId]->road_manager->rent_amount /
+                company->station_info[stationId]->total_rent_amount;
             if(company->station_info[stationId]->road_manager->residual <= 0){
                 policy = "reject";
 #ifdef DEBUG
@@ -244,7 +244,7 @@ void rental_company::return_handling(rental_company * company, int stationId, st
     cout << "from: " << user->station_id << " ,to: " << stationId << " using " << user->bikeType <<" bike."<<endl;
     cout << "BikeID: " << user->bikeId << ". Returning to station " << stationId << endl;
     cout << "shortest = " << shortest_distance << " ,actual = " << actual_distance << endl;
-    cout << "---------------------------------" << endl << endl;
+        cout << "---------------------------------" << endl << endl;
     #endif
     switch(bike_type){
         case 1:
