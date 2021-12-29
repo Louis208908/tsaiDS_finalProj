@@ -167,8 +167,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
                 #endif
                 int changeToWhichType = 0;
                 string leastUsedType =
-                    company->station_info[stationId]->lady_manager->residual
-                        > company->station_info[stationId]->road_manager->residual && lady_fee[0] > road_fee[0]
+                    lady_fee[0] < road_fee[0]
                         ? "road"
                         : "lady";
 
@@ -213,9 +212,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
                 cout << "UserId " << userId << " has been rejected!" << endl;
 #endif
                 int changeToWhichType = 0;
-                string leastUsedType =
-                    company->station_info[stationId]->electric_manager->residual
-                        > company->station_info[stationId]->road_manager->residual && electric_fee[0] > road_fee[0]
+                string leastUsedType = electric_fee[0] < road_fee[0]
                         ? "road"
                         : "electric";
 
@@ -258,8 +255,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
 #endif
                 int changeToWhichType = 0;
                 string leastUsedType =
-                    company->station_info[stationId]->electric_manager->residual
-                        > company->station_info[stationId]->lady_manager->residual&& lady_fee[0] > electric_fee[0]
+                    lady_fee[0] < electric_fee[0]
                         ? "lady"
                         : "electric";
 
