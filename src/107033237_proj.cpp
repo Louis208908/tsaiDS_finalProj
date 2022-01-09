@@ -1,6 +1,6 @@
 // g++ -g *.cpp -o 107033237_proj -std=c++11
 
-#include "bits/stdc++.h"
+// #include "bits/stdc。++.h"
 #include "stdio.h"
 #include "stdlib.h"
 #include "dirent.h"
