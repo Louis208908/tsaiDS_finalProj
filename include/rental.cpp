@@ -120,10 +120,14 @@ void station::bikeRegistering(){
     // allowing all bikes to returne to the same station
 
     if (this->station_id == map_info::station_amount)
-        rental_company::totalBikeInventory = bikeCount;
+    {
+      rental_company::totalBikeInventory = bikeCount;
+      bikeCount = 0;
+    }
+        
 }
 
-string rental_company::rent_handling(rental_company *company, int stationId, string userId, string bikeType, int rentTime){
+string rental_company::rent_handling(rental_company *company, int stationId, string userId, string bikeType, int rentTime, int policyLevel){
     if(rentTime < 0 || rentTime > 1440){
         return "reject";
         // request out of time is not acceptable
@@ -153,7 +157,10 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
             company->station_info[stationId]->electric_manager->rent_amount++;
             company->station_info[stationId]->electric_manager->request_rate =
                 (float)company->station_info[stationId] ->electric_manager->rent_amount / company->station_info[stationId]->total_rent_amount;
-            if (company->station_info[stationId]->electric_manager->residual <= 0) {
+            if (company->station_info[stationId]->electric_manager->residual <= 0)
+            {
+              if (policyLevel != 2)
+                    return "reject";
                 policy = "reject";
 
                 if (company->most_expensive_type == "electric")
@@ -177,7 +184,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
 
 				policy = "change";
 				company->user_info_manager->insert(stationId, userId, leastUsedType, rentBikeId, rentTime, policy);
-				return "accept";                  
+				return "change to " + leastUsedType;                  
 	
 
 
@@ -189,10 +196,13 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
             }
             break;
     case 2:
-                  company->station_info[stationId]->lady_manager->rent_amount++;
+            company->station_info[stationId]->lady_manager->rent_amount++;
             company->station_info[stationId]->lady_manager->request_rate =
                 (float)company->station_info[stationId] ->lady_manager->rent_amount / company->station_info[stationId]->total_rent_amount;
-            if(company->station_info[stationId]->lady_manager->residual <= 0){
+            if (company->station_info[stationId]->lady_manager->residual <= 0)
+            {
+                if (policyLevel != 2)
+                    return "reject";
                 policy = "reject";
 
                 if (company->most_expensive_type == "lady")
@@ -217,7 +227,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
 
 				policy = "change";
 				company->user_info_manager->insert(stationId, userId, leastUsedType, rentBikeId, rentTime, policy);
-				return "accept";
+				return "change to " + leastUsedType; 
 
                 
                 // company->user_info_manager->insert(stationId, userId, bikeType,rentTime, policy);
@@ -229,13 +239,15 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
             }
             break;
         case 3:
-            if(company->station_info[stationId]->road_manager->residual <= 0){
+            if (company->station_info[stationId]->road_manager->residual <= 0){
+                if (policyLevel != 2)
+                    return "reject";
               	policy = "reject";
                 if (company->most_expensive_type == "road")
                   return "reject";
                 int changeToWhichType = 0;
                 string leastUsedType =
-                    lady_fee[0] < electric_fee[0] ? "electricc" : "lady";
+                    lady_fee[0] < electric_fee[0] ? "electric" : "lady";
 
 
 				int rentBikeId = 0;
@@ -252,7 +264,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
 
 				policy = "change";
 				company->user_info_manager->insert(stationId, userId, leastUsedType, rentBikeId, rentTime, policy);
-				return "accept";                  
+				return "change to " + leastUsedType;                  
 
 
                 // company->user_info_manager->insert(stationId, userId, bikeType,rentTime, policy);

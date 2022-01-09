@@ -1277,7 +1277,7 @@ rent 7 electric 00872 570
 accept
 retrun 3 00627 571
 rent 8 road 00035 572
-reject
+change to electric
 rent 4 lady 00600 572
 accept
 retrun 1 00126 573
@@ -1464,7 +1464,7 @@ retrun 4 00453 679
 rent 6 lady 00478 680
 accept
 rent 9 lady 00135 680
-reject
+change to electric
 retrun 5 00831 681
 retrun 6 00208 682
 retrun 5 00373 683
@@ -1609,7 +1609,7 @@ accept
 rent 3 electric 00580 761
 accept
 rent 4 lady 00105 762
-reject
+change to electric
 rent 2 lady 00670 763
 accept
 retrun 7 00095 764
@@ -1822,7 +1822,7 @@ rent 9 road 00929 849
 accept
 retrun 6 00927 849
 rent 3 electric 00177 850
-reject
+accept
 rent 1 road 00694 850
 accept
 rent 5 lady 00405 851
@@ -1869,7 +1869,7 @@ rent 2 electric 00907 870
 accept
 retrun 6 00043 870
 rent 4 lady 00864 870
-reject
+change to electric
 retrun 1 00838 871
 rent 8 electric 00225 872
 accept
@@ -2556,10 +2556,10 @@ retrun 2 00614 1158
 retrun 7 00881 1158
 retrun 5 00816 1158
 rent 9 lady 00757 1160
-reject
+change to electric
 retrun 4 00626 1161
 rent 6 electric 00876 1161
-reject
+accept
 retrun 2 00683 1161
 retrun 1 00112 1162
 rent 3 lady 00728 1162

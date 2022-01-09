@@ -39,11 +39,10 @@ hashTable::hashTable(int hashFcn)
 node *user::findUser(string user_id){
     int id = stoi(user_id);
     int key = id % this->hTable->hashFcn;
-    node *current = this->hTable->user_info[key];
-    while (current != nullptr && current->user_id != user_id)
-        current = current->next;
-    
-    return current;
+    node** indirect = &this->hTable->user_info[key];
+    while (*indirect != nullptr && (*indirect)->user_id != user_id)
+        indirect = &(*indirect)->next;
+    return *indirect;
 
 }
 

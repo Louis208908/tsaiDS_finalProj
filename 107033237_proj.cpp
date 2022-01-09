@@ -12,9 +12,13 @@ ifstream mapStream("./test_case/map.txt", ifstream::in);
 ifstream stationStream("./test_case/station.txt", ifstream::in);
 ifstream userStream("./test_case/user.txt", ifstream::in);
 ifstream feeStream("./test_case/fee.txt", ifstream::in);
+
+
 ofstream requestStream("./test_case/request.txt", ofstream::out);
 ofstream status("./part1_status.txt", ofstream::out);
 ofstream response("./part1_response.txt", ofstream::out);
+ofstream status2("./part2_status.txt", ofstream::out);
+ofstream response2("./part2_response.txt", ofstream::out);
 static ofstream checkStream("./DS_testcase/open_basic1/test_case/check.txt", ofstream::out);
 
 
@@ -33,10 +37,6 @@ int main(void) {
     map_info::buildMap(mapStream, station_info);
     map_info::findMinDistance(station_info);
 
-    #ifdef TEST
-    map_info::showMap(station_info);
-    #endif
-
     rental_company *company = new rental_company(station_info);
 
     while(!userStream.eof()){
@@ -53,7 +53,7 @@ int main(void) {
             userStream >> user_id;
             userStream >> timeRent;
             response << "rent " << station_id << " " << bikeType << " " << user_id << " " << timeRent << endl;
-            string resp = rental_company::rent_handling(company, station_id, user_id, bikeType, timeRent);
+            string resp = rental_company::rent_handling(company, station_id, user_id, bikeType, timeRent, 1);
             response << resp << endl;
         }
         else if(serviceType == "return"){
@@ -73,14 +73,61 @@ int main(void) {
 
     status << company->revenue << endl;
 
-    status.close();
-    response.close();
+    // status.close();
+    // response.close();
     feeStream.close();
     stationStream.close();
-    requestStream.close();
-    checkStream.close();
+    // requestStream.close();
+    // checkStream.close();
     userStream.close();
     mapStream.close();
+
+
+    stationStream.open("./test_case/station.txt", ifstream::in);
+    userStream.open("./test_case/user.txt", ifstream::in);
+    feeStream.open("./test_case/fee.txt", ifstream::in);
+
+    rental_company *company2 = new rental_company(station_info);
+
+
+    
+    while(!userStream.eof()){
+        string serviceType;
+        int station_id;
+        string user_id;
+        int timeRent;
+        int timeReturn;
+        string bikeType;
+        userStream >> serviceType;
+        if (serviceType == "rent") {
+            userStream >> station_id;
+            userStream >> bikeType;
+            userStream >> user_id;
+            userStream >> timeRent;
+            response2 << "rent " << station_id << " " << bikeType << " " << user_id << " " << timeRent << endl;
+            string resp = rental_company::rent_handling(company2, station_id, user_id, bikeType, timeRent, 2);
+            response2 << resp << endl;
+        }
+        else if(serviceType == "return"){
+            userStream >> station_id;
+            userStream >> user_id;
+            userStream >> timeReturn;
+            response2 << "retrun " << station_id  << " " << user_id << " " << timeReturn << endl;
+            rental_company::return_handling(company2, station_id, user_id, timeReturn);
+        }
+    }
+    
+    company2->showQuota();
+    cout << endl
+         << "------------------------------" << endl
+         << "Revenue = " << company2->revenue << endl
+         << "------------------------------" << endl;
+
+    status2 << company2->revenue << endl;
+
+
+
+
 
     clock_t end = clock();
     cout << "Time cost: " << (double)(end -  start)/ CLOCKS_PER_SEC * 1000 << "ms." << endl;
@@ -98,5 +145,12 @@ void fileRefresh(){
     response << "";
     response.close();
     response.open("./part1_response.txt", ofstream::app);
+
+    status2 << "";
+    status2.close();
+    status2.open("./part2_status.txt", ofstream::app);
+    response2 << "";
+    response2.close();
+    response2.open("./part2_response.txt", ofstream::app);
 
 }

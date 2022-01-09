@@ -26,7 +26,7 @@ public:
     static int totalBikeInventory;
     void bikeAmountInit(ifstream &stationStream);
     void showQuota();
-    static string rent_handling(rental_company *company, int stationId, string userId, string bikeType, int rentTime);
+    static string rent_handling(rental_company *company, int stationId, string userId, string bikeType, int rentTime,int policyLevel);
     static void return_handling(rental_company *company, int stationId, string userId, int returnTime);
     static int calculating_fee(rental_company *company, int rentStation, int returnStation, string bikeType);
 };
