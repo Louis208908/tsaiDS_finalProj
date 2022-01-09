@@ -38,22 +38,13 @@ hashTable::hashTable(int hashFcn)
 
 node *user::findUser(string user_id){
     int id = stoi(user_id);
-//   cout << id << endl;
     int key = id % this->hTable->hashFcn;
     node *current = this->hTable->user_info[key];
-    // cout << "start finding user" << endl;
-    while (current != nullptr && current->user_id != user_id){
+    while (current != nullptr && current->user_id != user_id)
         current = current->next;
-    }
-    // cout << "user found!" << endl;
+    
     return current;
-    // if (current == nullptr){
-    //     // cout << current->user_id << " " << current->bikeType << " " << current->rentTime << endl;
-    //     // checkStream << current->user_id << " " << current->bikeType << " " << current->rentTime << endl;
-    //     return c;
-    // }
-    // else
-    //     return nullptr;
+
 }
 
 user::user()
