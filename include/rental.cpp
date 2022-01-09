@@ -60,6 +60,7 @@ station::station(int station_id, int electric_num, int lady_num, int road_num){
     this->lady_manager = new lady(lady_num, lady_fee[1], lady_fee[0]);
     this->road_manager = new road(road_num, road_fee[1], road_fee[0]);
     this->station_id = station_id;
+    this->total_rent_amount ++;
     bikeRegistering();
 
 }
@@ -73,14 +74,14 @@ void rental_company::showQuota(){
         bikeCount += this->station_info[i]->lady_manager->residual;
         bikeCount += this->station_info[i]->road_manager->residual;
         cout  << i <<": " << endl;
-        cout << "electric: " << "request rate = " << this->station_info[i]->electric_manager->request_rate << endl;
+        cout << "electric: " ;
         status << i << ": " << endl
                << "electric: ";
         this->station_info[i]->electric_manager->printHeap();
-        cout << "lady: " << "request rate = " << this->station_info[i]->lady_manager->request_rate << endl;
+        cout << "lady: " ;
         status << "lady: ";
         this->station_info[i]->lady_manager->printHeap();
-        cout << "road: " << "request rate = " << this->station_info[i]->road_manager->request_rate << endl;
+        cout << "road: " ;
         status << "road: ";
         this->station_info[i]->road_manager->printHeap();
     }

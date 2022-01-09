@@ -32,7 +32,8 @@ public:
 };
 
 class station{
-    public:
+public:
+        int total_rent_amount;
         // friend class rental_company;
         // int electric_amount;
         // int lady_amount;

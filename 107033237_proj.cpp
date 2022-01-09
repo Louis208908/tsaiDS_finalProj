@@ -71,10 +71,6 @@ int main(void) {
          << "Revenue = " << company->revenue << endl
          << "------------------------------" << endl;
 
-    // status << endl
-    //      << "------------------------------" << endl
-    //      << "Revenue = " << company->revenue << endl
-    //      << "------------------------------" << endl;
     status << company->revenue << endl;
 
     status.close();
