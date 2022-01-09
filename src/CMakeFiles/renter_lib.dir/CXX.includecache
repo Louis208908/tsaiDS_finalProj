@@ -7,6 +7,8 @@
 #IncludeRegexTransform: 
 
 /home/louis/c_project/final_proj/include/bike.h
+bits/stdc++.h
+/home/louis/c_project/final_proj/include/bits/stdc++.h
 stdio.h
 /home/louis/c_project/final_proj/include/stdio.h
 stdlib.h
@@ -39,6 +41,8 @@ climits
 -
 
 /home/louis/c_project/final_proj/include/rental_company.h
+bits/stdc++.h
+/home/louis/c_project/final_proj/include/bits/stdc++.h
 map.h
 /home/louis/c_project/final_proj/include/map.h
 renter.h
@@ -48,6 +52,8 @@ bike.h
 fstream
 -
 climits
+-
+cmath
 -
 
 /home/louis/c_project/final_proj/include/renter.cpp

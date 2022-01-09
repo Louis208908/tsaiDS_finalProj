@@ -4,7 +4,7 @@
 #define swap(a, b) \
     (a) ^= (b);    \
     (b) ^= (a);    \
-    (a) ^= (b);
+    (a) ^= (b)
 
 extern ofstream status;
 extern ofstream response;
@@ -19,9 +19,6 @@ BIKE::BIKE(int amount) {
     this->residual = 0;
     this->storehouse = (int*)malloc(sizeof(int) * 100 * map_info::station_amount);
     
-
-
-
 }
 
 void BIKE::insert(int key){

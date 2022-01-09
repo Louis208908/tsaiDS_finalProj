@@ -3,16 +3,17 @@
 // #include "bits/stdc。++.h"
 #include "stdio.h"
 #include "stdlib.h"
-#include "dirent.h"
+// #include "dirent.h"
 #include "../include/rental_company.h"
+#include "time.h"
 
 using namespace std;
 
 #ifdef TEST
-ifstream mapStream("../DS_testcase/open_basic3/test_case/map.txt", ifstream::in);
-ifstream stationStream("../DS_testcase/open_basic3/test_case/station.txt", ifstream::in);
-ifstream userStream("../DS_testcase/open_basic3/test_case/user.txt", ifstream::in);
-ifstream feeStream("../DS_testcase/open_basic3/test_case/fee.txt", ifstream::in);
+ifstream mapStream("../DS_testcase/open_basic2/test_case/map.txt", ifstream::in);
+ifstream stationStream("../DS_testcase/open_basic2/test_case/station.txt", ifstream::in);
+ifstream userStream("../DS_testcase/open_basic2/test_case/user.txt", ifstream::in);
+ifstream feeStream("../DS_testcase/open_basic2/test_case/fee.txt", ifstream::in);
 ofstream requestStream("../DS_testcase/open_basic1/test_case/request.txt", ofstream::out);
 ofstream status("../output/part1_status.txt", ofstream::out);
 ofstream response("../output/part1_response.txt", ofstream::out);
@@ -30,29 +31,13 @@ static ofstream checkStream("../DS_testcase/open_basic1/test_case/check.txt", of
 
 void fileRefresh();
 
-void findFiles(string path){
-    DIR *dir = NULL;
-    struct dirent *entry;
-    int fileAmount = 0;
-    if ((dir = opendir(&path[0])) == NULL){
-        printf("opendir failed!");
-        return;
-    }
-    else{
-        while (entry = readdir(dir)){
-            cout << entry->d_name << endl;
-            // if (strstr(entry->d_name, ".csv") != NULL)
-            //     fileAmount++;
-        }
-        closedir(dir);
-    }
-}
 
 int map_info::station_amount;
 int rental_company::totalBikeInventory;
 
 int main(void) {
-  
+
+    srand(time(0));
     clock_t start = clock();
     fileRefresh();
     map_info::findMaxId(mapStream);

@@ -1,12 +1,13 @@
 #ifndef __rental_company_H
 #define __rental_company_H
 
-// #include "bits/stdc++.h"
+#include "bits/stdc++.h"
 #include "map.h"
 #include "renter.h"
 #include "bike.h"
 #include <fstream>
 #include <climits>
+#include <cmath>
 
 
 using namespace std;
@@ -15,7 +16,9 @@ class rental_company{
 
 
 public:
+    string most_expensive_type;
     int revenue;
+    int total_rent_request;
     class map_info **map;
     rental_company(class map_info** map);
     class station **station_info;

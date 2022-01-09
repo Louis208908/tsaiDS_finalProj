@@ -25,11 +25,14 @@ rental_company::rental_company(class map_info** map){
     feeStream >> str;
     feeStream >> road_fee[0] >> road_fee[1];
     feeStream >> waiting_fee >> reduced_rate >> transfer_fee;
+
+    this->most_expensive_type = electric_fee[1] > lady_fee[1] ? (electric_fee[1] > road_fee[1]? "electric" : "road") : (lady_fee[1] > road_fee[1] ? "lady" : "road");
     this->station_info = (class station **)malloc(sizeof(class station) * (map_info::station_amount + 1));
     this->map = map;
     this->bikeAmountInit(stationStream);
     this->user_info_manager = new user();
     this->revenue = 0;
+    this->total_rent_request = 0;
 
     #ifdef DEBUG
     cout << "-------------------------" << endl
@@ -59,9 +62,7 @@ station::station(int station_id, int electric_num, int lady_num, int road_num){
     this->station_id = station_id;
     this->total_rent_amount = 0;
     bikeRegistering();
-    // this->electric_amount = elec;
-    // this->lady_amount = lady;
-    // this->road_amount = road;
+
 }
 
 void rental_company::showQuota(){
@@ -73,14 +74,14 @@ void rental_company::showQuota(){
         bikeCount += this->station_info[i]->lady_manager->residual;
         bikeCount += this->station_info[i]->road_manager->residual;
         cout  << i <<": " << endl;
-        cout << "electric: ";
+        cout << "electric: " << "request rate = " << this->station_info[i]->electric_manager->request_rate << endl;
         status << i << ": " << endl
                << "electric: ";
         this->station_info[i]->electric_manager->printHeap();
-        cout << "lady: ";
+        cout << "lady: " << "request rate = " << this->station_info[i]->lady_manager->request_rate << endl;
         status << "lady: ";
         this->station_info[i]->lady_manager->printHeap();
-        cout << "road: ";
+        cout << "road: " << "request rate = " << this->station_info[i]->road_manager->request_rate << endl;
         status << "road: ";
         this->station_info[i]->road_manager->printHeap();
     }
@@ -96,44 +97,30 @@ void rental_company::showQuota(){
 
 void station::bikeRegistering(){
     static int bikeCount = 0;
-    // cout << "station id: " << this->station_id << endl;
-    // cout << "electric: ";
+
     for (int i = 0; i < this->electric_manager->quota; i++){
         int bikeId = this->station_id * 100 + i;
-        // cout << bikeId << " ";
         this->electric_manager->insert(bikeId);
     }
     bikeCount += this->electric_manager->quota;
-    // cout << endl;
-    // cout << "lady: ";
     this->electric_manager->quota = 100 * map_info::station_amount;
     for (int i = 0; i < this->lady_manager->quota; i++){
         int bikeId = this->station_id * 100 + i;
-        // cout << bikeId << " ";
         this->lady_manager->insert(bikeId);
     }
     bikeCount += this->lady_manager->quota;
-    // cout << endl
-    //      << "road: ";
     this->lady_manager->quota = 100 * map_info::station_amount;
     for (int i = 0; i < this->road_manager->quota; i++){
         int bikeId = this->station_id * 100 + i;
-        // cout << bikeId << " ";
         this->road_manager->insert(bikeId);
     }
     bikeCount += this->road_manager->quota;
-    // cout << endl;
     this->road_manager->quota = 100 * map_info::station_amount;
     // after initializing we expand the quota to the possible maximun number of the whole world
     // allowing all bikes to returne to the same station
 
     if (this->station_id == map_info::station_amount)
         rental_company::totalBikeInventory = bikeCount;
-
-    #ifdef DEBUG
-    if(this->station_id == map_info::station_amount)
-        cout << "total bike amount = " << bikeCount << endl << endl  << endl;
-    #endif
 }
 
 string rental_company::rent_handling(rental_company *company, int stationId, string userId, string bikeType, int rentTime){
@@ -141,7 +128,15 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
         return "reject";
         // request out of time is not acceptable
     }
+    company->total_rent_request ++;
     company->station_info[stationId]->total_rent_amount++;
+
+    // find out the popularity of a certain station, as an reference of changing bike type
+    double station_access_rate =
+        (float)company->station_info[stationId]->total_rent_amount / (8 * company->total_rent_request);
+    int inventoryBuffer = (int)ceil(round(rental_company::totalBikeInventory * station_access_rate)) % 10;
+    // cout << inventoryBuffer << endl;
+    
     // after a borrow request get, increase the record no matter bike shortage or not
     int bike_type = 0;
     if(bikeType == "electric")
@@ -157,38 +152,34 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
     case 1:
             company->station_info[stationId]->electric_manager->rent_amount++;
             company->station_info[stationId]->electric_manager->request_rate =
-                (float)company->station_info[stationId] ->electric_manager->rent_amount
-                        / company->station_info[stationId]->total_rent_amount;
+                (float)company->station_info[stationId] ->electric_manager->rent_amount / company->station_info[stationId]->total_rent_amount;
             if (company->station_info[stationId]->electric_manager->residual <= 0) {
                 policy = "reject";
-                #ifdef DEBBUG
-                    cout << "electric not available now" << endl;
-                    cout << "UserId " << userId << " has been rejected!" << endl;
-                #endif
+
+                if (company->most_expensive_type == "electric")
+                  return "reject";
                 int changeToWhichType = 0;
                 string leastUsedType =
-                    lady_fee[0] < road_fee[0]
-                        ? "road"
-                        : "lady";
+				lady_fee[0] < road_fee[0] ? "road" : "lady";
 
-                int rentBikeId = 0;
-                if (leastUsedType == "road") {
-                  if (company->station_info[stationId]
-                          ->road_manager->residual <= 0)
-                        return "reject";
-                  rentBikeId = company->station_info[stationId]
-                                   ->road_manager->extractMin();
-                } else {
-                  if (company->station_info[stationId]
-                          ->lady_manager->residual <= 0)
-                        return "reject";
-                  rentBikeId = company->station_info[stationId]
-                                   ->lady_manager->extractMin();
-                }
+				int rentBikeId = 0;
+				if (leastUsedType == "road"){
+					if (company->station_info[stationId] ->road_manager->residual <= inventoryBuffer)
+						return "reject";
+					rentBikeId = company->station_info[stationId]->road_manager->extractMin();
+				}
+				else
+				{
+				if (company->station_info[stationId]->lady_manager->residual <= inventoryBuffer)
+						return "reject";
+					rentBikeId = company->station_info[stationId]->lady_manager->extractMin();
+				}
 
-                policy = "change";
-                company->user_info_manager->insert(stationId, userId, leastUsedType, rentBikeId, rentTime, policy);
-                return "accept";
+				policy = "change";
+				company->user_info_manager->insert(stationId, userId, leastUsedType, rentBikeId, rentTime, policy);
+				return "accept";                  
+	
+
 
                 return "reject";
                 
@@ -202,38 +193,35 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
     case 2:
                   company->station_info[stationId]->lady_manager->rent_amount++;
             company->station_info[stationId]->lady_manager->request_rate =
-                (float)company->station_info[stationId] ->lady_manager->rent_amount
-                        / company->station_info[stationId]->total_rent_amount;
+                (float)company->station_info[stationId] ->lady_manager->rent_amount / company->station_info[stationId]->total_rent_amount;
             if(company->station_info[stationId]->lady_manager->residual <= 0){
                 policy = "reject";
-#ifdef DEBBUG
 
-                cout << "lady not available now" << endl;
-                cout << "UserId " << userId << " has been rejected!" << endl;
-#endif
+                if (company->most_expensive_type == "lady")
+                  return "reject";
+
                 int changeToWhichType = 0;
-                string leastUsedType = electric_fee[0] < road_fee[0]
-                        ? "road"
-                        : "electric";
 
-                int rentBikeId = 0;
-                if (leastUsedType == "road") {
-                  if (company->station_info[stationId]
-                          ->road_manager->residual <= 0)
-                        return "reject";
-                  rentBikeId = company->station_info[stationId]
-                                   ->road_manager->extractMin();
-                } else {
-                  if (company->station_info[stationId]
-                          ->electric_manager->residual <= 0)
-                        return "reject";
-                  rentBikeId = company->station_info[stationId]
-                                   ->electric_manager->extractMin();
-                }
+				string leastUsedType =
+					electric_fee[0] < road_fee[0] ? "road" : "electric";
 
-                policy = "change";
-                company->user_info_manager->insert(stationId, userId, leastUsedType, rentBikeId, rentTime, policy);
-                return "accept";
+				int rentBikeId = 0;
+				if (leastUsedType == "road") {
+					if (company->station_info[stationId]->road_manager->residual <= inventoryBuffer)
+							return "reject";
+					rentBikeId = company->station_info[stationId]->road_manager->extractMin();
+				}
+				else {
+					if (company->station_info[stationId] ->electric_manager->residual <= inventoryBuffer)
+						return "reject";
+					rentBikeId = company->station_info[stationId]->electric_manager->extractMin();
+				}
+
+				policy = "change";
+				company->user_info_manager->insert(stationId, userId, leastUsedType, rentBikeId, rentTime, policy);
+				return "accept";
+
+                
                 // company->user_info_manager->insert(stationId, userId, bikeType,rentTime, policy);
                 return "reject";
             }
@@ -248,31 +236,31 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
                 (float)company->station_info[stationId] ->road_manager->rent_amount
                         / company->station_info[stationId]->total_rent_amount;
             if(company->station_info[stationId]->road_manager->residual <= 0){
-                policy = "reject";
+              	policy = "reject";
+                if (company->most_expensive_type == "road")
+                  return "reject";
                 int changeToWhichType = 0;
                 string leastUsedType =
-                    lady_fee[0] < electric_fee[0]
-                        ? "lady"
-                        : "electric";
+                    lady_fee[0] < electric_fee[0] ? "electricc" : "lady";
 
-                int rentBikeId = 0;
-                if (leastUsedType == "lady") {
-                  if (company->station_info[stationId]
-                          ->lady_manager->residual <= 0)
-                        return "reject";
-                  rentBikeId = company->station_info[stationId]
-                                   ->lady_manager->extractMin();
-                } else {
-                  if (company->station_info[stationId]
-                          ->electric_manager->residual <= 0)
-                        return "reject";
-                  rentBikeId = company->station_info[stationId]
-                                   ->electric_manager->extractMin();
-                }
 
-                policy = "change";
-                company->user_info_manager->insert(stationId, userId, leastUsedType, rentBikeId, rentTime, policy);
-                return "accept";
+				int rentBikeId = 0;
+				if (leastUsedType == "lady") {
+					if (company->station_info[stationId] ->lady_manager->residual <= inventoryBuffer)
+						return "reject";
+					rentBikeId = company->station_info[stationId]->lady_manager->extractMin();
+				}
+				else {
+					if (company->station_info[stationId]->electric_manager->residual <= inventoryBuffer)
+						return "reject";
+					rentBikeId = company->station_info[stationId]->electric_manager->extractMin();
+				}
+
+				policy = "change";
+				company->user_info_manager->insert(stationId, userId, leastUsedType, rentBikeId, rentTime, policy);
+				return "accept";                  
+
+
                 // company->user_info_manager->insert(stationId, userId, bikeType,rentTime, policy);
                 return "reject";
             }
@@ -289,10 +277,8 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
 void rental_company::return_handling(rental_company * company, int stationId, string userId, int returnTime){
     int user_id = stoi(userId);
     node *user = company->user_info_manager->findUser(userId);
-    if (user == nullptr) {
-
+    if (user == nullptr) 
       return ;
-    }
     if(returnTime - user->rentTime > 1440 || returnTime - user->rentTime < 0){
         cout << "invalid return" << endl;
         return;
@@ -336,15 +322,12 @@ void rental_company::return_handling(rental_company * company, int stationId, st
             if (actual_distance > shortest_distance) {
                 if (user->policy == "change")
                     actual_distance *= reduced_rate;
-                
-
                 company->revenue += actual_distance * company->station_info[stationId]->lady_manager->regular_fee;
             }
             else {
-              if (user->policy == "change")
-                    actual_distance *= reduced_rate;
-              company->revenue +=
-                  actual_distance * company->station_info[stationId] ->lady_manager->discount_fee;
+            	if (user->policy == "change")
+                	actual_distance *= reduced_rate;
+              	company->revenue += actual_distance * company->station_info[stationId] ->lady_manager->discount_fee;
             }
             break;
         case 3:

@@ -1,7 +1,7 @@
 #ifndef __bike_H
 #define __bike_H
 
-// #include "bits/stdc++.h"
+#include "bits/stdc++.h"
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
@@ -29,6 +29,7 @@ class BIKE{
          * 
          */
         int residual;
+        
         /**
          * @brief the actual space where the bikeID has been stored
          * 
@@ -36,6 +37,8 @@ class BIKE{
         int *storehouse;
         int regular_fee;
         int discount_fee;
+
+
         /**
          * @brief use to record how many bike of a certain type has been rent
          * 
