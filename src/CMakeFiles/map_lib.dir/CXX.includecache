@@ -11,6 +11,18 @@ map.h
 /home/louis/c_project/final_proj/include/map.h
 
 /home/louis/c_project/final_proj/include/map.h
-bits/stdc++.h
-/home/louis/c_project/final_proj/include/bits/stdc++.h
+stdio.h
+/home/louis/c_project/final_proj/include/stdio.h
+stdlib.h
+/home/louis/c_project/final_proj/include/stdlib.h
+string.h
+/home/louis/c_project/final_proj/include/string.h
+string
+-
+iostream
+-
+fstream
+-
+climits
+-
 

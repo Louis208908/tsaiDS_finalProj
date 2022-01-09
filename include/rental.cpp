@@ -249,10 +249,6 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
                         / company->station_info[stationId]->total_rent_amount;
             if(company->station_info[stationId]->road_manager->residual <= 0){
                 policy = "reject";
-#ifdef DEBUG
-                cout << "road not available now" << endl;
-                cout << "UserId " << userId << " has been rejected!" << endl;
-#endif
                 int changeToWhichType = 0;
                 string leastUsedType =
                     lady_fee[0] < electric_fee[0]
@@ -294,15 +290,11 @@ void rental_company::return_handling(rental_company * company, int stationId, st
     int user_id = stoi(userId);
     node *user = company->user_info_manager->findUser(userId);
     if (user == nullptr) {
-      #ifdef DEBUG
-      cout << "the user has been rejected, no bike has been rent" << endl;
-      #endif
+
       return ;
     }
-    // cout << "get user data" << endl;
     if(returnTime - user->rentTime > 1440 || returnTime - user->rentTime < 0){
         cout << "invalid return" << endl;
-        // operation out of a day is invalid
         return;
     }
     
@@ -319,13 +311,7 @@ void rental_company::return_handling(rental_company * company, int stationId, st
 
     int shortest_distance = company->map[smaller_stationId]->distance[bigger_stationId];
     int actual_distance = returnTime - user->rentTime;
-    #ifdef DEBUG
-    cout << "---------------------------------" << endl;
-    cout << "from: " << user->station_id << " ,to: " << stationId << " using " << user->bikeType <<" bike."<<endl;
-    cout << "BikeID: " << user->bikeId << ". Returning to station " << stationId << endl;
-    cout << "shortest = " << shortest_distance << " ,actual = " << actual_distance << endl;
-    cout << "---------------------------------" << endl << endl;
-    #endif
+
     switch(bike_type){
         case 1:
             company->station_info[stationId]->electric_manager->insert(user->bikeId);
@@ -353,7 +339,6 @@ void rental_company::return_handling(rental_company * company, int stationId, st
                 
 
                 company->revenue += actual_distance * company->station_info[stationId]->lady_manager->regular_fee;
-                // cout << "No discount :< \n";
             }
             else {
               if (user->policy == "change")
@@ -368,9 +353,7 @@ void rental_company::return_handling(rental_company * company, int stationId, st
                 if (user->policy == "change")
                     actual_distance *= reduced_rate;
                 
-
                 company->revenue += actual_distance * company->station_info[stationId]->road_manager->regular_fee;
-                // cout << "No discount :< \n";
             }
             else {
               if (user->policy == "change")

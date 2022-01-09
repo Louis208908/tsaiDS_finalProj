@@ -1,10 +1,12 @@
 #ifndef __rental_company_H
 #define __rental_company_H
 
-#include "bits/stdc++.h"
+// #include "bits/stdc++.h"
 #include "map.h"
 #include "renter.h"
 #include "bike.h"
+#include <fstream>
+#include <climits>
 
 
 using namespace std;

@@ -7,22 +7,48 @@
 #IncludeRegexTransform: 
 
 /home/louis/c_project/final_proj/include/bike.h
-bits/stdc++.h
-/home/louis/c_project/final_proj/include/bits/stdc++.h
+stdio.h
+/home/louis/c_project/final_proj/include/stdio.h
+stdlib.h
+/home/louis/c_project/final_proj/include/stdlib.h
+string.h
+/home/louis/c_project/final_proj/include/string.h
+string
+-
+iostream
+-
+fstream
+-
+climits
+-
 
 /home/louis/c_project/final_proj/include/map.h
-bits/stdc++.h
-/home/louis/c_project/final_proj/include/bits/stdc++.h
+stdio.h
+/home/louis/c_project/final_proj/include/stdio.h
+stdlib.h
+/home/louis/c_project/final_proj/include/stdlib.h
+string.h
+/home/louis/c_project/final_proj/include/string.h
+string
+-
+iostream
+-
+fstream
+-
+climits
+-
 
 /home/louis/c_project/final_proj/include/rental_company.h
-bits/stdc++.h
-/home/louis/c_project/final_proj/include/bits/stdc++.h
 map.h
 /home/louis/c_project/final_proj/include/map.h
 renter.h
 /home/louis/c_project/final_proj/include/renter.h
 bike.h
 /home/louis/c_project/final_proj/include/bike.h
+fstream
+-
+climits
+-
 
 /home/louis/c_project/final_proj/include/renter.cpp
 renter.h
@@ -31,6 +57,18 @@ rental_company.h
 /home/louis/c_project/final_proj/include/rental_company.h
 
 /home/louis/c_project/final_proj/include/renter.h
-bits/stdc++.h
-/home/louis/c_project/final_proj/include/bits/stdc++.h
+stdio.h
+/home/louis/c_project/final_proj/include/stdio.h
+stdlib.h
+/home/louis/c_project/final_proj/include/stdlib.h
+string.h
+/home/louis/c_project/final_proj/include/string.h
+string
+-
+iostream
+-
+fstream
+-
+climits
+-
 

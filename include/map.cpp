@@ -75,8 +75,7 @@ void map_info::showMap(map_info **station){
 
 void map_info::findMinDistance(map_info **station) {
     bool visited[map_info::station_amount + 1];
-    map_info **map = (map_info **)malloc(sizeof(map_info *) *
-                                         (map_info::station_amount + 1));
+    map_info **map = (map_info **)malloc(sizeof(map_info *) * (map_info::station_amount + 1));
 
     for (int i = 1; i <= map_info::station_amount; i++) 
         map[i] = (map_info *)malloc(sizeof(map_info) * (map_info::station_amount + 1));

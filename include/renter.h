@@ -1,7 +1,14 @@
 #ifndef __renter_H
 #define __renter_H
 
-#include "bits/stdc++.h"
+// #include "bits/stdc++.h"
+#include "stdio.h"
+#include "stdlib.h"
+#include "string.h"
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <climits>
 
 /**
  * @brief  defining our hashFunction
