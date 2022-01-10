@@ -9,6 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <climits>
+#include <cmath>
 
 /**
  * @brief  defining our hashFunction

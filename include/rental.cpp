@@ -65,6 +65,31 @@ station::station(int station_id, int electric_num, int lady_num, int road_num){
 
 }
 
+void rental_company::showQuota(ofstream &output){
+    int bikeCount = 0;
+    
+    for (int i = 1; i <= map_info::station_amount; i ++){
+        // cout << "station_id: " << i << endl;
+        bikeCount += this->station_info[i]->electric_manager->residual;
+        bikeCount += this->station_info[i]->lady_manager->residual;
+        bikeCount += this->station_info[i]->road_manager->residual;
+        cout  << i <<": " << endl;
+        cout << "electric: " ;
+        output << i << ": " << endl
+               << "electric: ";
+        this->station_info[i]->electric_manager->printHeap(output);
+        cout << "lady: " ;
+        output << "lady: ";
+        this->station_info[i]->lady_manager->printHeap(output);
+        cout << "road: " ;
+        output << "road: ";
+        this->station_info[i]->road_manager->printHeap(output);
+    }
+    #ifdef DEBUG
+    cout << "After a day, total bike amount = " << bikeCount << endl;
+    #endif
+}
+
 void rental_company::showQuota(){
     int bikeCount = 0;
     
@@ -184,7 +209,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
 
 				policy = "change";
 				company->user_info_manager->insert(stationId, userId, leastUsedType, rentBikeId, rentTime, policy);
-				return "change to " + leastUsedType;                  
+				return "discount " + leastUsedType;                  
 	
 
 
@@ -227,7 +252,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
 
 				policy = "change";
 				company->user_info_manager->insert(stationId, userId, leastUsedType, rentBikeId, rentTime, policy);
-				return "change to " + leastUsedType; 
+				return "discount " + leastUsedType; 
 
                 
                 // company->user_info_manager->insert(stationId, userId, bikeType,rentTime, policy);
@@ -264,7 +289,7 @@ string rental_company::rent_handling(rental_company *company, int stationId, str
 
 				policy = "change";
 				company->user_info_manager->insert(stationId, userId, leastUsedType, rentBikeId, rentTime, policy);
-				return "change to " + leastUsedType;                  
+				return "discount " + leastUsedType;                  
 
 
                 // company->user_info_manager->insert(stationId, userId, bikeType,rentTime, policy);

@@ -1,7 +1,7 @@
 #ifndef __bike_H
 #define __bike_H
 
-#include "bits/stdc++.h"
+// #include "bits/stdc++.h"
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
@@ -41,6 +41,7 @@ class BIKE{
         void heapify(int index);
         int extractMin();
         void printHeap();
+        void printHeap(ofstream &output);
 };
 
 class electric: public BIKE{

@@ -1,13 +1,14 @@
 #ifndef __rental_company_H
 #define __rental_company_H
 
-#include "bits/stdc++.h"
+// #include "bits/stdc++.h"
 #include "map.h"
 #include "renter.h"
 #include "bike.h"
 #include <fstream>
 #include <climits>
 #include <cmath>
+
 
 
 using namespace std;
@@ -25,6 +26,7 @@ public:
     class user *user_info_manager;
     static int totalBikeInventory;
     void bikeAmountInit(ifstream &stationStream);
+    void showQuota(ofstream &output);
     void showQuota();
     static string rent_handling(rental_company *company, int stationId, string userId, string bikeType, int rentTime,int policyLevel);
     static void return_handling(rental_company *company, int stationId, string userId, int returnTime);

@@ -53,6 +53,21 @@ void BIKE::printHeap(){
 }
 
 
+void BIKE::printHeap(ofstream &output){
+    // cout << "Amount: " << this->residual << endl;
+    int amount = this->residual;
+    for (int i = 0; i < amount; i++){
+        int data = this->extractMin();
+        cout << data << " ";
+        output << data << " ";
+        // this->extractMin();
+        // cout << this->residual << " ";
+    }
+    cout << endl;
+    output << endl;
+}
+
+
 int BIKE::extractMin(){
     if(this->residual <= 0){
         cout << "storehouse empty!" << endl;

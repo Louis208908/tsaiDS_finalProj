@@ -117,7 +117,7 @@ int main(void) {
         }
     }
     
-    company2->showQuota();
+    company2->showQuota(status2);
     cout << endl
          << "------------------------------" << endl
          << "Revenue = " << company2->revenue << endl
